@@ -1,772 +1,156 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>av0 Portfolio</title>
-        <meta name="description" content="" />
-        <link
-            rel="shortcut icon"
-            href="./assets/logo/logo.png"
-            type="image/x-icon"
-        />
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>av0 Portfolio — Nguyen Dinh Nhat Nguyen</title>
+  <meta name="description" content="Custom Discord bot & backend — portfolio">
+  <link rel="shortcut icon" href="images/Main.png" type="image/png">
 
-        <!-- Open Graph / Facebook -->
-        <meta property="og:title" content="Av0 Custom Discord Bot Service" />
-        <meta property="og:description" content="ReallAv0 Portfolio. Welcome to my page, feel free to take a look and consider my services" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://github.com/PaulleDemon" />
-        <!--Replace with the current website url-->
-        <meta property="og:image" content="" />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-        <!-- <link rel="stylesheet" href="../../tailwind-css/tailwind-runtime.css" /> -->
-        <link rel="stylesheet" href="./css/tailwind-build.css">
-        <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div id="page">
+    <header class="site-header">
+      <a class="logo" href="index.html">
+        <img src="images/Main.png" alt="logo">
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#features">Features</a>
+        <a class="nav-link" href="#pricing">Pricing</a>
+        <a class="nav-cta" href="#contact">Get started</a>
+      </nav>
+      <button id="menuBtn" class="menu-btn" aria-label="Open menu"><i class="bi bi-list"></i></button>
+    </header>
 
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
-            integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        />
-    </head>
-    <body class="tw-flex tw-font-mono tw-min-h-[100vh] tw-flex-col tw-bg-[#181B20] tw-text-white">
-      
+    <section id="hero" class="hero">
+      <div id="about"class="hero-inner">
+        <h1 class="hero-title">Custom-built <br>Discord Bot & Backend</h1>
+        <p class="hero-sub">I build fast, reliable Discord bots and backends using Node.js & Discord.js — tailored to your server.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#contact">Hire me</a>
+          <a class="btn ghost" href="#pricing">Pricing</a>
+        </div>
+        <div class="hero-visual">
+          <img src="images/Main.png" alt="dashboard sample">
+        </div>
+      </div>
+    </section>
 
-        <header
-            class="lg:tw-justify-around tw-max-w-lg:tw-px-4 tw-max-w-lg:tw-mr-auto tw-absolute tw-top-0 tw-z-20 tw-flex tw-h-[60px] tw-w-full tw-bg-opacity-0 tw-px-[5%] 
-                    tw-text-white"
-        >
-            <a class="tw-h-[50px] tw-w-[50px] tw-p-[4px]" href="">
-                <img
-                    src="./assets/logo/logo.png"
-                    alt="logo"
-                    class="tw-object tw-h-full tw-w-full"
-                />
-            </a>
-            <div
-                class="collapsible-header animated-collapse max-lg:tw-shadow-md"
-                id="collapsed-header-items"
-            >
-                <div
-                    class="tw-flex tw-h-full tw-w-max tw-gap-5 tw-text-base tw-text-white max-lg:tw-mt-[30px] max-lg:tw-flex-col max-lg:tw-place-items-end max-lg:tw-gap-5 lg:tw-mx-auto lg:tw-place-items-center"
-                >
-                    <a class="header-links" href="#aboutme"> About me </a>
-                    <a class="header-links" href="#pricing"> Pricing </a>
-                    <a class="header-links" href="#features"> Features </a>
-                    <a class="header-links" href="#feedbacks"> Feedbacks </a>
-                </div>
-                <div
-                    class="tw-mx-4 tw-flex tw-place-items-center tw-gap-[20px] tw-text-base max-md:tw-w-full max-md:tw-flex-col max-md:tw-place-content-center"
-                >
-                    <a
-                        href="https://discord.gg/HkEsKHyghn"
-                        aria-label="signup"
-                        class="tw-rounded-full tw-bg-secondary tw-px-3 tw-py-2 tw-text-white tw-transition-transform tw-duration-[0.3s] hover:tw-translate-x-2"
-                    >
-                        <span>Get started</span>
-                        <i class="bi bi-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <button
-                class="bi bi-list tw-absolute tw-right-3 tw-top-3 tw-z-50 tw-text-3xl tw-text-white lg:tw-hidden"
-                onclick="toggleHeader()"
-                aria-label="menu"
-                id="collapse-btn"
-            ></button>
-        </header>
+    <section id="tech" class="section tech">
+      <h2 class="section-title">My tech stack</h2>
+      <div class="tech-logos">
+        <img src="images/github-light.svg" alt="GitHub" />
+        <img src="images/nodejs.svg" alt="Node.js" />
+        <img src="images/npm-wordmark.svg" alt="NPM" />
+        <img src="images/insomnia.svg" alt="Insomnia" />
+        <img src="images/mongodb.svg" alt="MongoDB" />
+        <img src="images/discord.svg" alt="Discord" />
+        <img src="images/javascript.svg" alt="JS" />
+        <img src="images/python.svg" alt="Python" />
+        <img src="images/expressjs-light.svg" alt="ExpressJS" />
+        <img src="images/html5.svg" alt="HTML" />
+        <img src="images/css3.svg" alt="CSS" />
+      </div>
+    </section>
 
-        <section 
-            class="tw-relative tw-flex tw-min-h-[100vh] hero-section tw-w-full tw-max-w-[100vw] tw-flex-col tw-overflow-hidden max-md:tw-mt-[50px]"
-            id="hero-section"
-        >
-            <div
-                class="hero-bg-gradient tw-flex tw-h-full tw-min-h-[100vh] tw-w-full tw-flex-col tw-place-content-center tw-gap-6 tw-p-[5%] max-lg:tw-p-4  max-xl:tw-place-items-center"
-            >
-                <div
-                    class="tw-flex tw-flex-col tw-place-content-center tw-items-center"
-                >
-                    <div id="aboutme"
-                        class="reveal-up tw-text-center gradient-text tw-text-6xl tw-font-semibold tw-uppercase tw-leading-[80px] max-lg:tw-text-4xl max-md:tw-leading-snug"
-                    >
-                        <span class=""> Custom-built </span>
-                        <br />
-                        <span class=""> Discord Bot & Backend </span>
-                    </div>
-                    <div
-                        class="reveal-up tw-mt-10 tw-max-w-[450px] tw-p-2 tw-text-center max-lg:tw-max-w-full"
-                    >
-                    I'm a skilled Discord bot developer specializing in JavaScript and Discord.js. I create powerful and efficient bots tailored to server needs—whether for moderation, automation, or entertainment. Let’s build something amazing together!
-                    </div>
+    <section id="features" class="section features">
+      <h2 class="section-title">Core features</h2>
+      <div class="cards">
+        <article class="card">
+          <i class="bi bi-gear-fill card-icon"></i>
+          <h3>Custom-Tailored Bots</h3>
+          <p>Bots tailored to your needs — moderation, automation, games and more.</p>
+        </article>
 
-                    <div
-                        class="reveal-up tw-mt-4 tw-flex tw-place-items-center tw-gap-4 tw-overflow-hidden tw-p-2"
-                    >
-                        <a
-                            class="btn tw-transition-transform tw-duration-[0.3s] hover:tw-scale-x-[1.03]"
-                            href="https://discord.gg/HkEsKHyghn"
-                        >
-                            Hire me
-                        </a>
-                        <a
-                            class="btn !tw-bg-white !tw-text-secondary tw-transition-transform tw-duration-[0.3s] hover:tw-scale-x-[1.03]"
-                            href="#pricing"
-                        >
-                            <span>Price</span>
-                        </a>
-                    </div>
+        <article class="card">
+          <i class="bi bi-shield-lock-fill card-icon"></i>
+          <h3>Advanced Moderation</h3>
+          <p>Auto-moderation, logging, and role management for safer communities.</p>
+        </article>
 
-                </div>
+        <article class="card">
+          <i class="bi bi-cloud-fill card-icon"></i>
+          <h3>Scalable Backend</h3>
+          <p>Node.js backends and APIs engineered for performance and uptime.</p>
+        </article>
 
-                <div
-                    class="reveal-up tw-flex tw-w-full tw-place-content-center tw-place-items-center"
-                    id="dashboard-container">
-                    
-                    <div
-                        class="tw-flex tw-max-h-[750px] tw-min-h-[450px] tw-w-full tw-min-w-[350px] tw-max-w-[950px] tw-rounded-2xl 
-                                    tw-overflow-hidden tw-shadow-xl tw-shadow-[#443e437c]
-                                    max-lg:tw-h-fit max-lg:tw-max-h-[320px] max-lg:tw-min-h-[150px] max-lg:tw-w-[320px]"
-                    id="dashboard">
-                        <img
-                            src="./assets/images/home/dashboard.png"
-                            alt="dashboard"
-                            class="tw-h-full tw-w-full tw-object-cover  max-lg:tw-object-contain"
-                        />
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section
-            class="tw-relative tw-flex tw-flex-col tw-w-full tw-max-w-[100vw] 
-                    tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-8"
-        >
+        <article class="card">
+          <i class="bi bi-tools card-icon"></i>
+          <h3>Continuous Support</h3>
+          <p>Ongoing updates, bug fixes and feature additions as needed.</p>
+        </article>
+      </div>
+    </section>
 
-            <h2 class="reveal-up tw-text-3xl max-md:tw-text-xl">My tech stack</h2>
+    <section id="pricing" class="section pricing">
+      <h2 class="section-title">Pricing</h2>
+      <div class="pricing-grid">
+       <div class="price-card">
+        <h3>$9.99</h3>
+        <p>Basic Automations & Simple Commands</p>
+        <a class="btn primary" href="#contact">Get Started</a>
+        </div>
 
-            <div class="reveal-up carousel-container">
-                <div class="carousel tw-mt-6 tw-flex tw-w-full lg:w-place-content-center tw-gap-5 max-md:tw-gap-2">
-                    <!-- add the brands using your app  -->
-                    <div class="carousel-img tw-h-[30px] tw-w-[150px]">
-                        <img
-                            src="./assets/images/brand-logos/google.svg"
-                            alt="Google"
-                            class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
-                            srcset=""
-                        />
-                    </div>
-                    <div class="carousel-img tw-h-[30px] tw-w-[150px]">
-                        <img
-                            src="./assets/images/brand-logos/microsoft.svg"
-                            alt="Microsoft"
-                            class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
-                            srcset=""
-                        />
-                    </div>
-                    <div class="carousel-img tw-h-[30px] tw-w-[150px]">
-                        <img
-                            src="./assets/images/brand-logos/adobe.svg"
-                            alt="Adobe"
-                            class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
-                            srcset=""
-                        />
-                    </div>
-                    <div class="carousel-img tw-h-[30px] tw-w-[150px]">
-                        <img
-                            src="./assets/images/brand-logos/airbnb.svg"
-                            alt="Adobe"
-                            class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
-                            srcset=""
-                        />
-                    </div>
-                    <div class="carousel-img tw-h-[30px] tw-w-[150px]">
-                        <img
-                            src="./assets/images/brand-logos/stripe.svg"
-                            alt="Adobe"
-                            class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
-                            srcset=""
-                        />
-                    </div>
-                    <div class="carousel-img tw-h-[30px] tw-w-[150px]">
-                        <img
-                            src="./assets/images/brand-logos/reddit.svg"
-                            alt="Adobe"
-                            class="tw-h-full tw-w-full tw-object-contain tw-grayscale tw-transition-colors hover:tw-grayscale-0"
-                            srcset=""
-                        />
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section
-            class="tw-relative tw-flex tw-w-full tw-min-h-[80vh] tw-max-w-[100vw] tw-flex-col tw-place-content-center 
-            tw-place-items-center tw-overflow-hidden tw-p-6"
-        >
-            
-            <div
-                class="reveal-up tw-flex tw-min-h-[60vh] tw-place-content-center tw-place-items-center
-                        tw-gap-[10%] max-lg:tw-flex-col max-lg:tw-gap-10"
-            >
-                <div class="tw-flex">
-                    <div class="tw-max-h-[650px] tw-max-w-[850px] tw-overflow-hidden tw-rounded-lg 
-                                tw-shadow-lg tw-shadow-[rgba(170,49,233,0.44021358543417366)]">
-                        <img
-                            src="./assets/images/home/coding.png"
-                            alt="coding"
-                            class="tw-h-full tw-w-full tw-object-cover"
-                        />
-                    </div>
-                </div>
-                <div
-                    class="tw-mt-6 tw-flex tw-max-w-[450px] tw-flex-col tw-gap-4"
-                >
-                    <h3 class="tw-text-4xl max-md:tw-text-2xl tw-font-medium">⚡ Precision Engineering, Power-Packed Backend!</h3>
+        <div class="price-card featured">
+        <h3>$39.99</h3>
+        <p>Advanced Features + Database & API Integration</p>
+        <a class="btn primary" href="#contact">Most Popular</a>
+        </div>
 
-                    <div class="tw-mt-4 tw-flex tw-flex-col tw-gap-3">
-                        <h4 class="tw-text-xl tw-font-medium">
-                            <i class="bi bi-check-all !tw-text-2xl"></i>
-                            🔥Expertly Crafted Bot
-                        </h4>
-                        <span class="tw-text-lg tw-text-gray-300">
-                            With years of experience in Discord bot development, I specialize in creating high-performance, feature-rich, and fully customized bots. From seamless API integrations to AI-powered automation, I ensure every bot is optimized for speed, reliability, and user experience.
-                        </span>
-                    </div>
-                    <div class="tw-mt-4 tw-flex tw-flex-col tw-gap-3">
-                        <h4 class="tw-text-xl tw-font-medium">
-                            <i class="bi bi-check-all !tw-text-2xl"></i>
-                            💻 Rock-Solid Backend
-                        </h4>
-                        <span class="tw-text-lg tw-text-gray-300">
-                            Behind every great bot is a powerful backend, and that’s where I excel. I build efficient, secure, and scalable systems using Node.js, custom APIs, and database integrations, ensuring smooth performance even under heavy loads.
-                        </span>
-                    </div>
-                </div>
-            </div>
-        
-        </section>
+        <div class="price-card">
+        <h3>$79.99</h3>
+        <p>Full Customization + Priority Support</p>
+        <a class="btn primary" href="#contact">Get Premium</a>
+        </div>
 
+        <div class="price-card">
+        <h3>$149.99</h3>
+        <p>Enterprise Package – Everything + Lifetime Updates</p>
+        <a class="btn primary" href="#contact">Get Enterprise</a>
+        </div>
 
-        <section
-            class="tw-relative tw-flex tw-w-full tw-max-w-[100vw] tw-min-h-[100vh] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-6"
-        >
-            <div
-                class="tw-mt-8 tw-flex tw-flex-col tw-place-items-center tw-gap-5"
-            >
-                <div id="features"
-                    class="reveal-up tw-mt-5 tw-flex tw-flex-col tw-gap-3 tw-text-center"
-                >
-                    <h3 class="tw-text-xl tw-text-primary">
-                        Features loved by our clients
-                    </h3>
-                    <h2 class="tw-text-4xl tw-font-semibold">Core features</h2>
-                    
-                </div>
-                <div
-                    class="tw-mt-6 tw-flex tw-max-w-[60%] tw-flex-wrap tw-place-content-center tw-gap-2 max-lg:tw-flex-col"
-                >
-                    <div
-                        class="reveal-up tw-flex tw-h-[250px] tw-w-[350px] tw-flex-col tw-gap-2 tw-p-4 tw-text-center"
-                    >
-                        <!-- <img src="./assets/images/home/sample.jpg" 
-                                alt="feature1"> -->
-                        <i
-                            class="bi bi-boombox-fill tw-text-5xl tw-text-primary"
-                        ></i>
-                        <h3 class="tw-text-2xl tw-font-semibold">Custom-Tailored Bots</h3>
-                        <div class="tw-text-gray-300">
-                            💡 Get a bot built specifically for your server’s needs, from moderation to automation and entertainment.
-                        </div>
-                    </div>
-                    <div
-                        class="reveal-up tw-flex tw-h-[250px] tw-w-[350px] tw-flex-col tw-gap-2 tw-p-4 tw-text-center"
-                    >
-                        <!-- <img src="./assets/images/home/sample.jpg" 
-                                alt="feature1"> -->
-                        <i
-                            class="bi bi-award-fill tw-text-5xl tw-text-primary"
-                        ></i>
-                        <h3 class="tw-text-2xl tw-font-semibold">Advanced Moderation Tools</h3>
-                        <div class="tw-text-gray-300">
-                            🛡️ Protect your community with auto-moderation, anti-spam, role management, and detailed logging.
-                        </div>
-                    </div>
-                    <div
-                        class="reveal-up tw-flex tw-h-[250px] tw-w-[350px] tw-flex-col tw-gap-2 tw-p-4 tw-text-center"
-                    >
-                        <!-- <img src="./assets/images/home/sample.jpg" 
-                                alt="feature1"> -->
-                        <i
-                            class="bi bi-book-fill tw-text-5xl tw-text-primary"
-                        ></i>
-                        <h3 class="tw-text-2xl tw-font-semibold">Seamless Discord Integration, Custom API</h3>
-                        <div class="tw-text-gray-300">
-                            🔗 My bots work flawlessly with Discord's API, ensuring smooth and reliable performance. Even with custom API as you wish.
-                        </div>
-                    </div>
-                    <div
-                        class="reveal-up tw-flex tw-h-[250px] tw-w-[350px] tw-flex-col tw-gap-2 tw-p-4 tw-text-center"
-                    >
-                        <!-- <img src="./assets/images/home/sample.jpg" 
-                                alt="feature1"> -->
-                        <i
-                            class="bi bi-briefcase-fill tw-text-5xl tw-text-primary"
-                        ></i>
-                        <h3 class="tw-text-2xl tw-font-semibold">24/7 Uptime & Fast Performance</h3>
-                        <div class="tw-text-gray-300">
-                            ⚡ Optimized for efficiency, my bots run around the clock with minimal downtime and lightning-fast response times.
-                        </div>
-                    </div>
-                    <div
-                        class="reveal-up tw-flex tw-h-[250px] tw-w-[350px] tw-flex-col tw-gap-2 tw-p-4 tw-text-center"
-                    >
-                        <!-- <img src="./assets/images/home/sample.jpg" 
-                                alt="feature1"> -->
-                        <i
-                            class="bi bi-credit-card-2-front-fill tw-text-5xl tw-text-primary"
-                        ></i>
-                        <h3 class="tw-text-2xl tw-font-semibold">Interactive & Engaging Features</h3>
-                        <div class="tw-text-gray-300">
-                            🎮 Enhance your server with fun commands, games, meme generation, and AI-powered interactions.
-                        </div>
-                    </div>
-                    <div
-                        class="reveal-up tw-flex tw-h-[250px] tw-w-[350px] tw-flex-col tw-gap-2 tw-p-4 tw-text-center"
-                    >
-                        <!-- <img src="./assets/images/home/sample.jpg" 
-                            alt="feature1"> -->
-                        <i class="bi bi-fire tw-text-5xl tw-text-primary"></i>
-                        <h3 class="tw-text-2xl tw-font-semibold">Continuous Updates & Support</h3>
-                        <div class="tw-text-gray-300">
-                            🛠️ I provide ongoing updates, bug fixes, and improvements to keep your bot running at its best.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+      </div>
+    </section>
 
-        <section  id="feedbacks"
-            class="tw-mt-5 tw-flex tw-w-full tw-min-h-[100vh] tw-flex-col tw-place-content-center tw-place-items-center tw-p-[2%]"
-        >
-            <h3
-                class="tw-text-3xl tw-font-medium tw-text-primary max-md:tw-text-2xl"
-            >
-                Loved by our clients
-            </h3>
-            <!-- Testimonials -->
-            <div
-           
-                class="tw-mt-8 tw-gap-10 tw-space-y-8 max-md:tw-columns-1 lg:tw-columns-2 xl:tw-columns-3"
-            >
-                <div
-                    class="reveal-up tw-flex tw-border-[#333a44] tw-bg-[#1d2127] tw-border-[1px] tw-h-fit tw-w-[350px] tw-break-inside-avoid tw-flex-col tw-rounded-lg tw-p-4 max-lg:tw-w-[320px]"
-                >
-                    <div class="tw-flex tw-place-items-center tw-gap-3">
-                        <div
-                            class="tw-h-[50px] tw-w-[50px] tw-overflow-hidden tw-rounded-full tw-border-[2px] tw-border-solid tw-border-primary"
-                        >
-                            <img
-                                src="https://cdn.discordapp.com/avatars/994617455592882196/3c2cc22dd502144bdfab9a7996f3fbad.webp?size=256"
-                                class="tw-h-full tw-w-full tw-object-cover"
-                                alt="women"
-                            />
-                        </div>
-                        <div class="tw-flex tw-flex-col tw-gap-1">
-                            <div class="tw-font-semibold">Evanpolice12</div>
-                            <div class="tw-text-gray-400">⭐️⭐️⭐️⭐️⭐️</div>
-                        </div>
-                    </div>
-                    <p class="tw-mt-4  tw-text-gray-300">
-                        Not only did I get an amazing bot for my communities, but the support and updates are fantastic!
-                    </p>
-                </div>
-                <div
-                    class="reveal-up tw-flex tw-border-[#333a44] tw-bg-[#1d2127] tw-border-[1px] tw-h-fit tw-w-[350px] tw-break-inside-avoid tw-flex-col tw-rounded-lg tw-p-4 max-lg:tw-w-[320px]"
-                >
-                    <div class="tw-flex tw-place-items-center tw-gap-3">
-                        <div
-                            class="tw-h-[50px] tw-w-[50px] tw-overflow-hidden tw-rounded-full tw-border-[2px] tw-border-solid tw-border-primary"
-                        >
-                            <img
-                                src="https://cdn.discordapp.com/avatars/640642857450864640/caded394f36f76a45f2492d2a0dec92c.webp?size=240"
-                                class="tw-h-full tw-w-full tw-object-cover"
-                                alt="man"
-                            />
-                        </div>
-                        <div class="tw-flex tw-flex-col tw-gap-1">
-                            <div class="tw-font-semibold">Michael O'Leary</div>
-                            <div class="tw-text-gray-400">⭐️⭐️⭐️⭐️</div>
-                        </div>
-                    </div>
-                    <p class="tw-mt-4 tw-text-gray-300">
-                        Supportive developer.
-                    </p>
-                </div>
-                <div
-                    class="reveal-up tw-flex tw-border-[#333a44] tw-bg-[#1d2127] tw-border-[1px] tw-h-fit tw-w-[350px] tw-break-inside-avoid tw-flex-col tw-rounded-lg tw-p-4 max-lg:tw-w-[320px]"
-                >
-                    <div class="tw-flex tw-place-items-center tw-gap-3">
-                        <div
-                            class="tw-h-[50px] tw-w-[50px] tw-overflow-hidden tw-rounded-full tw-border-[2px] tw-border-solid tw-border-primary"
-                        >
-                            <img
-                                src="https://cdn.discordapp.com/avatars/958763491278352474/6b7c801c7d06413562fd749dc8f2d02a.webp?size=240"
-                                class="tw-h-full tw-w-full tw-object-cover"
-                                alt="man"
-                            />
-                        </div>
-                        <div class="tw-flex tw-flex-col tw-gap-1">
-                            <div class="tw-font-semibold">Wolfang</div>
-                            <div class="tw-text-gray-400">⭐️⭐️⭐️⭐️⭐️</div>
-                        </div>
-                    </div>
-                    <p class="tw-mt-4 tw-text-gray-300">
-                        Great website for passive income, even connect with a gambling Discord Bot.
-                    </p>
-                </div>
-                <div
-                    class="reveal-up tw-flex tw-border-[#333a44] tw-bg-[#1d2127] tw-border-[1px] tw-h-fit tw-w-[350px] tw-break-inside-avoid tw-flex-col tw-rounded-lg tw-p-4 max-lg:tw-w-[320px]"
-                >
-                    <div class="tw-flex tw-place-items-center tw-gap-3">
-                        <div
-                            class="tw-h-[50px] tw-w-[50px] tw-overflow-hidden tw-rounded-full tw-border-[2px] tw-border-solid tw-border-primary"
-                        >
-                            <img
-                                src="https://cdn.discordapp.com/avatars/1200140869479714869/1a73779623484079fe2875ac2879c064.webp?size=240"
-                                class="tw-h-full tw-w-full tw-object-cover"
-                                alt="man"
-                            />
-                        </div>
-                        <div class="tw-flex tw-flex-col tw-gap-1">
-                            <div class="tw-font-semibold">Milk</div>
-                            <div class="tw-text-gray-400">⭐️⭐️⭐️⭐️⭐️</div>
-                        </div>
-                    </div>
-                    <p class="tw-mt-4 tw-text-gray-300">
-                        I had a unique idea for a bot, and this service made it happen! The app runs smoothly, and the custom API integration is spot on!
-                    </p>
-                </div>
-                <div
-                    class="reveal-up tw-flex tw-h-fit tw-border-[#333a44] tw-bg-[#1d2127] tw-border-[1px] tw-w-[350px] tw-break-inside-avoid tw-flex-col tw-rounded-lg tw-p-4 max-lg:tw-w-[320px]"
-                >
-                    <div class="tw-flex tw-place-items-center tw-gap-3">
-                        <div
-                            class="tw-h-[50px] tw-w-[50px] tw-overflow-hidden tw-rounded-full tw-border-[2px] tw-border-solid tw-border-primary"
-                        >
-                            <img
-                                src="https://cdn.discordapp.com/avatars/1124428203969220648/bf8065875b67e36baf85dee744481ebc.webp?size=240"
-                                class="tw-h-full tw-w-full tw-object-cover"
-                                alt="man"
-                            />
-                        </div>
-                        <div class="tw-flex tw-flex-col tw-gap-1">
-                            <div class="tw-font-semibold">Saood</div>
-                            <div class="tw-text-gray-400">⭐️⭐️⭐️⭐️⭐️</div>
-                        </div>
-                    </div>
-                    <p class="tw-mt-4 tw-text-gray-300">
-                        The developer was super responsive and built exactly what I needed. Great back-end dev.
-                    </p>
-                </div>
-                <div
-                    class="reveal-up tw-flex tw-border-[#333a44] tw-bg-[#1d2127] tw-border-[1px] tw-h-fit tw-w-[350px] tw-break-inside-avoid tw-flex-col tw-rounded-lg tw-p-4 max-lg:tw-w-[320px]"
-                >
-                    <div class="tw-flex tw-place-items-center tw-gap-3">
-                        <div
-                            class="tw-h-[50px] tw-w-[50px] tw-overflow-hidden tw-rounded-full tw-border-[2px] tw-border-solid tw-border-primary"
-                        >
-                            <img
-                                src="https://cdn.discordapp.com/avatars/1125845125633945662/f6df388cefefa7de8b43ec35ea8bac75.webp?size=240"
-                                class="tw-h-full tw-w-full tw-object-cover"
-                                alt="man"
-                            />
-                        </div>
-                        <div class="tw-flex tw-flex-col tw-gap-1">
-                            <div class="tw-font-semibold">NonGamerYT</div>
-                            <div class="tw-text-gray-400">
-                                ⭐️⭐️⭐️⭐️⭐️
-                            </div>
-                        </div>
-                    </div>
-                    <p class="tw-mt-4 tw-text-gray-300">
-                        Very advanced scripter and helpful with any questions that occur!  He was very quickly able to complete the task needed and had amazing communication.
-                    </p>
-                </div>
-            </div>
-        </section>
+    <section id="works" class="section works">
+      <h2 class="section-title">Recent work</h2>
+      <div class="projects">
+       
+      </div>
+    </section>
 
-        <section
-            class="tw-mt-5 tw-flex tw-w-full tw-flex-col tw-place-items-center tw-p-[2%]"
-            id="pricing"
-        >
-            <h3
-                class="tw-text-3xl tw-font-medium tw-text-primary max-md:tw-text-2xl"
-            >
-            💲 Flexible Pricing for Every Project
-            </h3>
-            <h6>
-                Pricing varies based on the complexity and features of your bot. Choose a package that fits your needs, or request a custom solution!
-            </h6>
-            <!-- pricing -->
-            <div
-                class="tw-mt-10 tw-flex tw-flex-wrap tw-place-content-center tw-gap-8 max-lg:tw-flex-col"
-            >
-                <div
-                    class="reveal-up tw-flex tw-border-[#333a44] tw-bg-[#1d2127] tw-border-[1px] tw-w-[380px] tw-flex-col tw-place-items-center tw-gap-2 tw-rounded-lg tw-p-8 tw-shadow-xl max-lg:tw-w-[320px]"
-                >
-                    <h3 class="">
-                        <span class="tw-text-5xl tw-font-semibold">$10</span>
-    
-                    </h3>
-                    <p class="tw-mt-3 tw-text-center tw-text-gray-300">
-                        Perfect for small servers or simple automation.
-                    </p>
-                    <hr />
-                    <ul
-                        class="tw-mt-4 tw-flex tw-flex-col tw-gap-2 tw-text-center tw-text-lg tw-text-gray-200"
-                    >
-                        <li>✅ Up to 3 custom commands</li>
-                        <li>✅ Basic moderation (kick, ban, mute)</li>
-                        <li>✅ Quick setup & deployment</li>
-                        <li>✅ Custom API integration (limited)</li>
-                    </ul>
-                    <a
-                        href="https://discord.gg/HkEsKHyghn"
-                        class="btn tw-mt-8 !tw-w-full tw-transition-transform tw-duration-[0.3s] hover:tw-scale-x-[1.02]"
-                    >
-                        Get now
-                    </a>
-                </div>
-                <div
-                    class="reveal-up tw-flex tw-bg-[#1d2127] tw-w-[380px] tw-flex-col tw-place-items-center tw-gap-2 tw-rounded-lg tw-border-2 tw-border-primary tw-p-8 tw-shadow-xl max-lg:tw-w-[320px]"
-                >
-                    <h3 class="">
-                        <span class="tw-text-5xl tw-font-semibold">$50</span>
-                
-                    </h3>
-                    <p class="tw-mt-3 tw-text-center tw-text-gray-300">
-                        Great for growing servers needing more advanced tools. Or custom made bot with specific features.
-                    </p>
-                    <hr />
-                    <ul
-                        class="tw-mt-4 tw-flex tw-flex-col tw-gap-2 tw-text-center tw-text-lg tw-text-gray-200"
-                    >
-                        <li>✅ Up to 10 custom commands</li>
-                        <li>✅ Advanced moderation & logging</li>
-                        <li>✅ Custom API integration (multiple endpoints)</li>
-                        <li>✅ Database integration (MongoDB)</li>
-                        <li>✅ Interactive features & auto-responses</li>
-                        <li>✅ Connect with game & website</li>
-                        <li>✅ 7 days of free bug fixes & updates</li>
-                    </ul>
-                    <a
-                        href="https://discord.gg/HkEsKHyghn"
-                        class="btn tw-mt-8 !tw-w-full tw-transition-transform tw-duration-[0.3s] hover:tw-scale-x-[1.02]"
-                    >
-                        Get now
-                    </a>
-                </div>
-                <div
-                    class="reveal-up tw-flex tw-border-[#333a44] tw-bg-[#1d2127] tw-w-[380px] tw-flex-col tw-place-items-center tw-gap-2 tw-rounded-lg tw-p-8 tw-shadow-xl max-lg:tw-w-[320px]"
-                >
-                    <h3 class="">
-                        <span class="tw-text-5xl tw-font-semibold">$100</span>
-                
-                    </h3>
-                    <p class="tw-mt-3 tw-text-center tw-text-gray-300">
-                        The ultimate solution with full customization and premium features. Whatever you want, I will do it for you.
-                    </p>
-                    <hr />
-                    <ul
-                        class="tw-mt-4 tw-flex tw-flex-col tw-gap-2 tw-text-center tw-text-lg tw-text-gray-200"
-                    >
-                        <li>✅ AI-powered automation & API integrations</li>
-                        <li>✅ Web dashboard for bot management (optional)</li>
-                        <li>✅ Advanced role management & auto-moderation</li>
-                        <li>✅ Fully scalable Node.js application</li>
-                        <li>✅ Lifetime support & future updates</li>
-                    </ul>
-                    <a
-                        href="https://discord.gg/HkEsKHyghn"
-                        class="btn tw-mt-8 !tw-w-full tw-transition-transform tw-duration-[0.3s] hover:tw-scale-x-[1.02]"
-                    >
-                        Get now
-                    </a>
-                </div>
-            </div>
-        </section>
+    <footer id="contact" class="site-footer">
+      <div class="footer-inner">
+        <div>
+          <img class="footer-logo" src="images/Main.png" alt="logo">
+          <p>Nguyen Dinh Nhat Nguyen</p>
+        </div>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+        </div>
+        <div class="social">
+          <div >
+            <a href="#"><img src="images/discord.svg" class="footer-logo" alt="Discord" /></a>
+          </div>
+        </div>
+      </div>
+      <small class="copyright">© 2025 av0 — All rights reserved</small>
+    </footer>
+  </div>
 
-        <section
-            class="tw-mt-5 tw-flex tw-w-full tw-min-h-[80vh] tw-flex-col tw-place-content-center tw-place-items-center tw-p-[2%] max-lg:tw-p-3"
-        >
-            <h3
-                class="reveal-up tw-text-center tw-text-4xl tw-font-medium max-md:tw-text-2xl"
-            >
-                View my works✨
-            </h3>
-            <!-- pricing -->
-            <div
-                class="reveal-up tw-mt-10 tw-flex tw-flex-wrap tw-place-content-center tw-gap-10 max-lg:tw-flex-col"
-            >
-                <a
-                    href="https://discord.gg/EzzXgu9yTM"
-                    class="tw-flex tw-h-[400px] tw-w-[350px] tw-flex-col tw-gap-2 tw-overflow-clip tw-rounded-lg tw-border-[#333a44] tw-bg-[#1d2127] tw-border-[1px] tw-p-4 tw-shadow-xl max-lg:tw-w-[300px]"
-                >
-                    <div
-                        class="tw-h-[200px] tw-w-full tw-overflow-hidden tw-rounded-md"
-                    >
-                        <img
-                            src="./assets/images/home/nu1.png"
-                            alt="article image"
-                            class="tw-h-full tw-w-full tw-object-cover"
-                            srcset=""
-                        />
-                    </div>
-                    <h3 class="tw-text-2xl tw-font-semibold max-md:tw-text-xl">
-                        RBXPRO DISCORD BOT
-                    </h3>
-                    <p class="tw-mt-2 tw-text-gray-400">
-                        A gambling discord connected with a free earning Robux website.
-                    </p>
-                    <span>
-                        <span>Learn more</span>
-                        <i class="bi bi-arrow-right"></i>
-                    </span>
-                </a>
-                <a
-                    href="https://rbxpro.site/"
-                    class="tw-flex tw-h-[400px] tw-w-[350px] tw-flex-col tw-gap-2 tw-overflow-clip tw-rounded-lg tw-border-[#333a44] tw-bg-[#1d2127] tw-border-[1px] tw-p-4 tw-shadow-xl max-lg:tw-w-[300px]"
-                >
-                    <div
-                        class="tw-h-[200px] tw-w-full tw-overflow-hidden tw-rounded-md"
-                    >
-                        <img
-                            src="./assets/images/home/ss.png"
-                            alt="article image"
-                            class="tw-h-full tw-w-full tw-object-cover"
-                            srcset=""
-                        />
-                    </div>
-                    <h3 class="tw-text-2xl tw-font-semibold max-md:tw-text-xl">
-                        RBXPRO.SITE
-                    </h3>
-                    <p class="tw-mt-2 tw-text-gray-400">
-                        A website allow you to earn free ROBUX by doing easy tasks
-                    </p>
-                    <span>
-                        <span>Learn more</span>
-                        <i class="bi bi-arrow-right"></i>
-                    </span>
-                </a>
-                <a
-                    href=""
-                    class="tw-flex tw-h-[400px] tw-w-[350px] tw-flex-col tw-gap-2 tw-overflow-clip tw-rounded-lg tw-border-[#333a44] tw-bg-[#1d2127] tw-border-[1px] tw-p-4 tw-shadow-xl max-lg:tw-w-[300px]"
-                >
-                    <div
-                        class="tw-h-[200px] tw-w-full tw-overflow-hidden tw-rounded-md"
-                    >
-                    <video 
-                    src="./assets/images/home/2025-03-26 09-50-59.mp4" 
-                    class="tw-h-full tw-w-full tw-object-cover" 
-                    controls 
-                    autoplay 
-                    muted 
-                    loop
-                >
-                    Your browser does not support the video tag.
-                </video>
-                    </div>
-                    <h3 class="tw-text-2xl tw-font-semibold max-md:tw-text-xl">
-                        Seamless YouTube Live Giveaways with Auto Payouts!
-                    </h3>
-                    <p class="tw-mt-2 tw-text-gray-400">
-                        Automate YouTube live chat giveaways with instant Robux payouts!
-                    </p>
-                 
-                </a>
-            </div>
-        </section>
-
-
-        <section
-            class="tw-flex tw-w-full tw-flex-col tw-place-content-center tw-place-items-center tw-gap-[10%] tw-p-[5%] tw-px-[10%]"
-        >
-            <div
-                class="tw-flex tw-w-full tw-flex-col tw-place-content-center tw-place-items-center tw-gap-3"
-            >
-                <h2 class="tw-text-2xl tw-text-primary max-md:tw-text-xl">
-                    🚀 Ready to Level Up Your Discord Server?
-                </h2>
-                <h2 class="tw-text-xl max-md:tw-text-lg">
-                    Get a custom bot tailored to your needs! Contact me now to start your project!
-                </h2>
-
-                <div
-                    class="tw-flex tw-h-[60px] tw-place-items-center tw-gap-2 tw-overflow-hidden tw-p-2"
-                >
-                    <a
-                        class="btn tw-transition-colors tw-duration-[0.3s]"
-                        href=""
-                    >
-                        Get started!
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <footer
-            class="tw-mt-auto tw-flex tw-w-full tw-place-content-around tw-gap-3 tw-p-[5%] tw-px-[10%] tw-text-white max-md:tw-flex-col"
-        >
-            <div
-                class="tw-flex tw-h-full tw-w-[250px] tw-flex-col tw-place-items-center tw-gap-6 max-md:tw-w-full"
-            >
-                <img
-                    src="./assets/logo/logo.png"
-                    alt="logo"
-                    srcset=""
-                    class="tw-max-w-[120px]"
-                />
-                <div>
-                    Avocado Tree
-                    <br />
-                    Earth
-                    <br />
-                    Solar System
-                </div>
-                <div class="tw-mt-3 tw-text-lg tw-font-semibold">Join my server to start!</div>
-                <div class="tw-flex tw-gap-4 tw-text-2xl">
-                    <a href="https://discord.gg/HkEsKHyghn" aria-label="Discord">
-                        <i class="bi bi-discord"></i>
-                    </a>
-
-                </div>
-            </div>
-
-            <div class="tw-flex tw-h-full tw-w-[250px] tw-flex-col tw-gap-4">
-                <h2 class="tw-text-3xl max-md:tw-text-xl">Resources</h2>
-                <div class="tw-flex tw-flex-col tw-gap-3 max-md:tw-text-sm">
-                    <a href="#aboutme" class="footer-link">About me</a>
-                    <a href="#pricing" class="footer-link">Pricing</a>
-                    <a href="#features" class="footer-link">Features</a>
-                    <a href="#feedbacks" class="footer-link">Feedbacks</a>
-                  
-                </div>
-            </div>
-        </footer>
-    </body>
-
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"
-        integrity="sha512-B1lby8cGcAUU3GR+Fd809/ZxgHbfwJMp0jLTVfHiArTuUt++VqSlJpaJvhNtRf3NERaxDNmmxkdx2o+aHd4bvw=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
-    ></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"
-        integrity="sha512-AY2+JxnBETJ0wcXnLPCcZJIJx0eimyhz3OJ55k2Jx4RtYC+XdIi2VtJQ+tP3BaTst4otlGG1TtPJ9fKrAUnRdQ=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
-    ></script>
-
-    <script src="./index.js"></script>
+  <script>
+    const btn = document.getElementById('menuBtn');
+    btn && btn.addEventListener('click', ()=> {
+      document.querySelector('.main-nav')?.classList.toggle('open');
+    });
+  </script>
+</body>
 </html>
