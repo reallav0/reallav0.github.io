@@ -302,7 +302,7 @@ copyright {
   }
 
   .cards {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 0.5fr);
   }
 
   .main-nav {
@@ -323,6 +323,83 @@ copyright {
     padding: 12px;
     border-radius: 8px;
   }
+}
+@media (max-width: 480px) {
+  /* layout -> single column */
+  .hero-inner {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    padding: 0 8px;
+  }
+
+  /* text sizing */
+  .hero-title {
+    font-size: 1.6rem !important;
+    line-height: 1.1;
+  }
+  .hero-sub {
+    font-size: 0.95rem;
+    max-width: 100%;
+  }
+
+  /* hero image full width */
+  .hero-visual {
+    width: 100%;
+    display: block;
+  }
+  .hero-visual img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* cards -> single column */
+  .cards {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+
+  /* pricing -> stacked */
+  .pricing-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+    padding: 0 6px;
+  }
+  .price-card { padding: 16px; }
+
+  /* tech logos: smaller & wrapped */
+  .tech-logos img { height: 28px; margin: 6px; }
+
+  /* projects -> full width */
+  .projects .project { width: 100% !important; }
+
+  /* header / nav */
+  .main-nav { display: none !important; }
+  .menu-btn { display: block !important; }
+
+  /* mobile menu when opened */
+  .main-nav.open {
+    display: flex !important;
+    position: fixed;
+    top: 56px;
+    right: 0;
+    left: 0;
+    height: calc(100vh - 56px);
+    z-index: 2000;
+    flex-direction: column;
+    gap: 16px;
+    padding: 18px;
+    background: rgba(6, 8, 10, 0.95);
+    overflow-y: auto;
+  }
+  .main-nav.open a { padding: 12px 8px; font-size: 1.05rem; }
+
+  /* footer layout */
+  .footer-inner { grid-template-columns: 1fr !important; gap: 18px; padding: 0 8px; }
+  .footer-logo { height: 48px; }
+
+  /* reduce global paddings for mobile */
+  #page { padding-left: 4%; padding-right: 4%; }
 }
 @media (max-width: 1980px) {
   .cards {
