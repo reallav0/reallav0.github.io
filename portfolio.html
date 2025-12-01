@@ -6,10 +6,8 @@
   <title>Portfolio — Nguyen Dinh Nhat Nguyen</title>
   <meta name="description" content="Portfolio and developer profile of Nguyen Dinh Nhat Nguyen — aspiring software engineer and backend developer.">
   <link rel="shortcut icon" href="images/Main.png" type="image/png">
-
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -175,7 +173,7 @@
           <img class="footer-logo" src="images/Main.png" alt="logo">
           <p>Nguyen Dinh Nhat Nguyen</p>
           <p>Email: <a href="mailto:nguyend.nhatnguyen@gmail.com" style="text-decoration: none; color: aliceblue;">nguyend.nhatnguyen@gmail.com</a></p>
-          <p>Location: Jyväskylä, Finland</p>
+          <p>Location: Jyvaskyla, Finland</p>
         </div>
         <div class="footer-links">
             <a href="#hero">Summary</a>
@@ -183,7 +181,7 @@
             <a href="#skills">Skills</a>
         </div>
         <div class="social">
-          <div >
+          <div class="fix-firefox">
             <a href="https://discord.gg/HkEsKHyghn"><img src="images/discord.svg" class="footer-logo" alt="Discord" ></a>
           </div>
         </div>
@@ -195,6 +193,24 @@
     const btn = document.getElementById('menuBtn');
     btn && btn.addEventListener('click', ()=> {
       document.querySelector('.main-nav')?.classList.toggle('open');
+    });
+
+    // Smooth scroll with header offset for in-page links
+    document.querySelectorAll('.main-nav a[href^="#"], a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        const target = document.querySelector(targetId);
+        if (!target) return;
+        e.preventDefault();
+        const header = document.querySelector('.site-header');
+        const headerHeight = header ? header.getBoundingClientRect().height : 0;
+        const offset = Math.max(0, headerHeight + 8); // small gap under header
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+        // close mobile menu if open
+        document.querySelector('.main-nav')?.classList.remove('open');
+      });
     });
   </script>
 </body>

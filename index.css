@@ -19,6 +19,8 @@ body {
 html {
     overflow: scroll;
     overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px; /* adjust to match header height */
 }
 ::-webkit-scrollbar {
     width: 0;  /* Remove scrollbar space */
