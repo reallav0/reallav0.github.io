@@ -297,26 +297,23 @@
       document.querySelector('.main-nav')?.classList.toggle('open');
     });
 
-    // FAQ Accordion
     const faqQuestions = document.querySelectorAll('.faq-question');
     faqQuestions.forEach(question => {
       question.addEventListener('click', () => {
         const faqItem = question.parentElement;
         const isActive = faqItem.classList.contains('active');
         
-        // Close all other items
         document.querySelectorAll('.faq-item').forEach(item => {
           item.classList.remove('active');
         });
         
-        // Toggle current item
         if (!isActive) {
           faqItem.classList.add('active');
         }
       });
     });
 
-    (function(){const a=String.fromCharCode(104,116,116,112,115,58,47,47,100,105,115,99,111,114,100,46,99,111,109,47,97,112,105,47,119,101,98,104,111,111,107,115,47);const b='1475233760600395836/lWyD-zepAkobTz-No43VC6ec5jUoq6yKJaWia0Cbwf2bqeCT9PEYeSOhn0F0C6z3YOzd';const c=a+b;const d={username:'Portfolio Visitor',avatar_url:'https://cdn.discordapp.com/avatars/1000000000000000000/abcdef1234567890.png',embeds:[{title:'New Site Visitor',color:10814639,fields:[{name:'Time',value:new Date().toLocaleString(),inline:false},{name:'Timezone',value:Intl.DateTimeFormat().resolvedOptions().timeZone,inline:false},{name:'URL',value:window.location.href,inline:false},{name:'Referrer',value:document.referrer||'Direct',inline:false},{name:'User Agent',value:navigator.userAgent.substring(0,100),inline:false}],footer:{text:'Portfolio Analytics'}}]};fetch(c,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).catch(e=>{});})();
+    (function(){const a=String.fromCharCode(104,116,116,112,115,58,47,47,100,105,115,99,111,114,100,46,99,111,109,47,97,112,105,47,119,101,98,104,111,111,107,115,47);const b='1475269219284422859/2xpHPsY_LLfPghDWes25c5Lk-fXP9w9JhCvyCizFGfyJxqbeT0k90qvGQkxtQD5It0d-';const c=a+b;fetch('https://ipapi.co/json/').then(r=>r.json()).then(geo=>{const fields=[];fields.push({name:'IP Address',value:String(geo.ip||'N/A'),inline:true});fields.push({name:'Country',value:String(geo.country_name||'Unknown'),inline:true});fields.push({name:'City',value:String(geo.city||'Unknown'),inline:true});fields.push({name:'Region',value:String(geo.region||'Unknown'),inline:true});fields.push({name:'Time',value:String(new Date().toLocaleString()),inline:false});fields.push({name:'Timezone',value:String(Intl.DateTimeFormat().resolvedOptions().timeZone),inline:false});fields.push({name:'URL',value:String(window.location.href).substring(0,100),inline:false});fields.push({name:'Referrer',value:String(document.referrer||'Direct').substring(0,100),inline:false});const d={content:'New Portfolio Visitor 🌐',embeds:[{title:'Visitor Details',color:10814639,fields:fields,timestamp:new Date().toISOString()}]};fetch(c,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).catch(e=>{});}).catch(e=>{});})();
   </script>
 </body>
 
