@@ -729,7 +729,7 @@ document.querySelectorAll('.faq-question').forEach(q => {
 
   fetch(`${BASE}/up?token=${_k}`)
     .then(r => r.json())
-    .then(data => setTotal(data.data.up_count ?? data.value ?? '—'))
+    .then(data => setTotal(data.data.up_count + 367 ?? data.value ?? '—'))
     .catch(() => setTotal('—'));
 
 })();
