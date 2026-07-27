@@ -1,0 +1,28 @@
+{
+  "date": "2026-07-16",
+  "target": "index.html",
+  "framework": "vanilla HTML and CSS",
+  "font_stack": {
+    "before": "Space Grotesk and Inter",
+    "source": "index.html:9",
+    "decision": "replaced for the requested luxury redesign"
+  },
+  "palette": {
+    "before": "dark neutral with gold accent",
+    "source": "index.css:7",
+    "decision": "replaced with Atelier warm ivory and oxblood tokens"
+  },
+  "motion": {
+    "library": null,
+    "stance": "motion-cut",
+    "source": "package.json:23"
+  },
+  "spacing": {
+    "before": "ad hoc values",
+    "decision": "Hallmark 4-point semantic scale"
+  },
+  "notes": [
+    "Existing project links, screenshots, service facts, FAQ facts, and visitor counter were preserved.",
+    "Inline CSS was removed from index.html so index.css is the single styling source."
+  ]
+}

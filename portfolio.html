@@ -6,17 +6,19 @@
   <title>Portfolio — Nguyen Dinh Nhat Nguyen</title>
   <meta name="description" content="Portfolio and developer profile of Nguyen Dinh Nhat Nguyen — aspiring software engineer and backend developer.">
   <link rel="shortcut icon" href="images/Main.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="portfolio.css">
 </head>
 <body>
   <div id="page">
+
+    <!-- HEADER -->
     <header class="site-header">
       <a class="logo" href="portfolio.html">
         <img src="images/Main.png" alt="logo">
       </a>
-      <nav class="main-nav" aria-label="Main navigation">
+      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
         <a class="nav-link" href="#hero">Summary</a>
         <a class="nav-link" href="#project">Projects</a>
         <a class="nav-link" href="#skills">Skills</a>
@@ -25,193 +27,240 @@
       <button id="menuBtn" class="menu-btn" aria-label="Open menu"><i class="bi bi-list"></i></button>
     </header>
 
+    <!-- HERO -->
     <section id="hero" class="hero">
-      <div class="hero-inner" style="display: flex; justify-content: center; ">
-        <div >
-          <div>
-            <h1 class="hero-title">Nguyen Dinh Nhat Nguyen</h1>
-            <p class="hero-sub">Backend & Web Developer · Student at JAMK (ICT)</p>
-            <p style="max-width:48rem">
-              I’m a student passionate about backend systems, web apps, and automation. 
-              I build projects using <strong>Node.js, Next.js, and MongoDB</strong> — including Discord bots, dashboards, and API services.
-              Currently studying ICT at JAMK University of Applied Sciences in Finland.
-            </p>
-            <div class="hero-actions">
-              <a class="btn primary" href="mailto:nguyend.nhatnguyen@gmail.com">Get in touch</a>
-              <a class="btn ghost" href="Nguyen_Dinh_Nhat_Nguyen_CV.pdf" download>Download CV</a>
-            </div>
+      <div class="hero-inner">
+        <div>
+          <span class="hero-badge"><span class="dot"></span>Available for opportunities</span>
+          <h1 class="hero-title">Nguyen Dinh<br><span class="mark">Nhat Nguyen</span></h1>
+          <p class="hero-role">Backend &amp; Web Developer · Student at JAMK (ICT)</p>
+          <p class="hero-sub">
+            I am a software engineering student specializing in <strong>Backend Systems &amp; Web Architectures</strong>. 
+            I design and implement scalable backend frameworks, RESTful APIs, and automation scripts using <strong>Node.js, TypeScript, Next.js, and MongoDB</strong>. 
+            Currently based in Finland and pursuing my ICT degree at JAMK University of Applied Sciences, I build reliable integration systems, custom bots, and dashboard ecosystems. 
+            <strong>Looking for a developer internship or junior backend/full-stack engineer position.</strong>
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="mailto:nguyend.nhatnguyen@gmail.com">Get in touch</a>
+            <a class="btn ghost" href="Nguyen_Dinh_Nhat_Nguyen_CV.pdf" download>Download CV</a>
           </div>
-        <!--  <div class="hero-visual" aria-hidden="true">
-            <img src="images/Main.png" alt="profile" style="width:140px;height:140px;border-radius:8px;object-fit:cover">
-          </div> -->
         </div>
       </div>
     </section>
 
-    <section id="features" class="section features">
+    <!-- ABOUT -->
+    <section id="about" class="section">
       <h2 class="section-title">About me</h2>
       <div class="cards">
-        <article class="card">
-          <i class="bi bi-braces card-icon"></i>
-          <h3>Developer Focus</h3>
-          <p>I specialize in building backend systems and web apps that are efficient, secure, and maintainable. I enjoy problem-solving and automation.</p>
-        </article>
-
-        <article class="card">
-          <i class="bi bi-lightning-charge-fill card-icon"></i>
-          <h3>Tech Interests</h3>
-          <p>Web technologies, real-time systems, database design, API integration, and scalable infrastructure.</p>
-        </article>
-
-        <article class="card">
-          <i class="bi bi-code-slash card-icon"></i>
-          <h3>Projects & Learning</h3>
-          <p>Created Discord moderation and analytics bots, a real-time crash betting game, and a user settings dashboard with authentication and APIs.</p>
-        </article>
-
-        <article class="card">
-          <i class="bi bi-globe2 card-icon"></i>
-          <h3>Future Goals</h3>
-          <p>To become a professional backend or full-stack engineer and continue learning cloud technologies and software design patterns.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="features" class="section features">
-      <h2 class="section-title">Highlighted Projects</h2>
-      <div class="cards">
-        <article class="card" id="project">
-          <h3 style="color: #e49a2f">Multi-Auth Settings System</h3>
-          <p>OAuth login with Google, Discord, Facebook plus full user settings management.</p>
-          <p><a href="https://github.com/reallav0/multi-auth-settings-system" class="btn ghost">View Details</a></p>
-        </article>
-
-        <article class="card">
-          <h3 style="color: #e49a2f">Roblox Discord Moderation Bot</h3>
-          <p>Moderation bot with Roblox account linking, ban tools, and audit logging.</p>
-          <p><a href="https://github.com/reallav0/roblox-discord-moderation-bot" class="btn ghost">View Details</a></p>
-        </article>
-
-        <article class="card">
-          <h3 style="color: #e49a2f">Discord In-Game Item Tracker (Roblox)</h3>
-          <p>Tracks Roblox item prices and sends notifications directly through Discord.</p>
-          <p><a href="https://github.com/reallav0/discord-ingame-item-tracker-roblox" class="btn ghost">View Details</a></p>
-        </article>
-
-        <article class="card">
-          <h3 style="color: #e49a2f">In-Game Item E-Commerce (Dropped)</h3>
-          <p>Prototype marketplace for in-game items with user accounts and listings.</p>
-          <p><a href="https://github.com/reallav0/in-game-item-ecommerce-unfinished" class="btn ghost">View Details</a></p>
-        </article>
-
-        <article class="card">
-          <h3 style="color: #e49a2f">Calc (Not So Smart) — C++</h3>
-          <p>Simple C++ calculator project with basic expression handling.</p>
-          <p><a href="https://github.com/reallav0/calc-not-so-smart-cpp" class="btn ghost">View Details</a></p>
-        </article>
-
-        <article class="card">
-          <h3 style="color: #e49a2f">GitHub Auto Contributions</h3>
-          <p>Node.js script that auto-commits a text file to farm GitHub activity.</p>
-          <p><a href="https://github.com/reallav0/github-auto-contribuions" class="btn ghost">View Details</a></p>
-        </article>
-
-
-
-      
-      </div>
-    </section>
-
-    <section id="skills" class="section features">
-      <h2 class="section-title">Skills & Tools</h2>
-      <section id="tech" class="section tech">
-      <div class="tech-logos" id="skills">
-        <img src="images/github-light.svg" alt="GitHub" />
-        <img src="images/nodejs.svg" alt="Node.js" />
-        <img src="images/npm-wordmark.svg" alt="NPM" />
-        <img src="images/insomnia.svg" alt="Insomnia" />
-        <img src="images/mongodb.svg" alt="MongoDB" />
-        <img src="images/discord.svg" alt="Discord" />
-        <img src="images/javascript.svg" alt="JS" />
-        <img src="images/python.svg" alt="Python" />
-        <img src="images/expressjs-light.svg" alt="ExpressJS" />
-        <img src="images/html5.svg" alt="HTML" />
-        <img src="images/css3.svg" alt="CSS" />
-      </div>
-    </section>
-      <div class="cards" style="gap: 20px;flex-wrap:wrap">
-        <article class="card" style="min-width: 6rem">
-          <h3>Languages</h3>
-          <p>JavaScript (Node.js), TypeScript, Python</p>
-        </article>
-
-        <article class="card" style="min-width:12rem">
-          <h3>Frameworks</h3>
-          <p>Express, Discord.js</p>
-        </article>
-
-        <article class="card" style="min-width:12rem">
-          <h3>Databases</h3>
-          <p>MongoDB</p>
-        </article>
-
-        <article class="card" style="min-width:12rem">
-          <h3>DevOps</h3>
-          <p>Coming soon</p>
-        </article>
-
-        <article class="card" style="min-width:12rem">
-          <h3>Other</h3>
-          <p>Authentication systems, REST APIs, web sockets, and data visualization</p>
-        </article>
-      </div>
-    </section>
-    
-     <footer id="contact" class="site-footer">
-      <div class="footer-inner">
-        <div>
-          <img class="footer-logo" src="images/Main.png" alt="logo">
-          <p>Nguyen Dinh Nhat Nguyen</p>
-          <p>Email: <a href="mailto:nguyend.nhatnguyen@gmail.com" style="text-decoration: none; color: aliceblue;">nguyend.nhatnguyen@gmail.com</a></p>
-          <p>Location: Jyvaskyla, Finland</p>
-        </div>
-        <div class="footer-links">
-            <a href="#hero">Summary</a>
-            <a href="#project">Projects</a>
-            <a href="#skills">Skills</a>
-        </div>
-        <div class="social">
-          <div class="fix-firefox">
-            <a href="https://discord.gg/HkEsKHyghn"><img src="images/discord.svg" class="footer-logo" alt="Discord" ></a>
+        <article class="card reveal">
+          <div class="card-icon"><i class="bi bi-braces"></i></div>
+          <div>
+            <h3>Backend &amp; API Design</h3>
+            <p>I design and build secure, modular RESTful APIs and WebSocket-based services. I focus on clean separation of concerns, secure authentication (OAuth2, JWT), and optimized request processing to ensure high-performance endpoints.</p>
           </div>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon"><i class="bi bi-lightning-charge-fill"></i></div>
+          <div>
+            <h3>Systems &amp; Integrations</h3>
+            <p>I enjoy connecting systems and automating complex workflows. Experienced with event-driven architectures, third-party API integrations (such as Roblox Web APIs), web scraping, and database design (MongoDB/Mongoose).</p>
+          </div>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon"><i class="bi bi-code-slash"></i></div>
+          <div>
+            <h3>Practical Experience</h3>
+            <p>I have built and maintained several live systems, including user settings dashboards with multi-auth systems, telemetry trackers, and community discord systems handling analytics and moderation logs.</p>
+          </div>
+        </article>
+        <article class="card reveal">
+          <div class="card-icon"><i class="bi bi-globe2"></i></div>
+          <div>
+            <h3>Professional Value</h3>
+            <p>I bring knowledge of Agile methodologies, containerization with Docker, CI/CD with GitHub Actions, and cloud hosting. I write clean, documented code and am ready to integrate into a team and contribute from day one.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="project" class="section">
+      <h2 class="section-title">Highlighted projects</h2>
+      <div class="cards">
+        <article class="card reveal">
+          <div>
+            <h3>Multi-Auth &amp; Settings System</h3>
+            <p>A secure user configurations dashboard featuring multi-provider OAuth (Google, Discord, Facebook) authentication. Engineered with robust session controls, dynamic profile customization, and structured configuration schemas using Next.js and MongoDB.</p>
+            <div class="tags">
+              <span class="tag closed">Closed Source</span>
+              <span class="tag live">Live</span>
+              <span class="tag">OAuth</span>
+              <span class="tag">Next.js</span>
+              <span class="tag">MongoDB</span>
+            </div>
+            <p style="margin-top:10px"><a href="https://ideadrawn.com/signin" target="_blank" rel="noopener noreferrer" class="btn ghost">View page</a></p>
+          </div>
+        </article>
+        <article class="card reveal">
+          <div>
+            <h3>Crypto Escrow Platform</h3>
+            <p>A secure, multi-crypto escrow marketplace. Features hierarchical deterministic (HD) wallet generation, real-time blockchain monitoring for deposit detection, UTXO-based transaction management, dispute resolution workflows, and user reputation tracking.</p>
+            <div class="tags">
+              <span class="tag live">Live</span>
+              <span class="tag">Crypto</span>
+              <span class="tag">Escrow</span>
+              <span class="tag">Marketplace</span>
+              <span class="tag">Node.js</span>
+            </div>
+            <p style="margin-top:10px"><a href="https://excrow.xyz" target="_blank" rel="noopener noreferrer" class="btn ghost">View site</a></p>
+          </div>
+        </article>
+        <article class="card reveal">
+          <div>
+            <h3>GitHub Auto Contributions</h3>
+            <p>A cron-scheduled Node.js script that programmatically manages Git repositories. Automatically performs repository modifications, manages commit consistency, and farms Git activity graphs to maintain scheduled repository states.</p>
+            <div class="tags">
+              <span class="tag">Open Source</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Automation</span>
+              <span class="tag">Git</span>
+            </div>
+            <p style="margin-top:10px"><a href="https://github.com/reallav0/github-auto-contribuions" target="_blank" rel="noopener noreferrer" class="btn ghost">View project</a></p>
+          </div>
+        </article>
+        <article class="card reveal">
+          <div>
+            <h3>FREQX</h3>
+            <p>A high-performance free to use soundboard for Discord. Intercepts mic inputs, mixes audio effects in real-time, and routes the final customized mix directly to VB-CABLE driver outputs for low-latency live soundboards.</p>
+            <div class="tags">
+              <span class="tag">Open Source</span>
+              <span class="tag">Electron</span>
+              <span class="tag">Audio</span>
+              <span class="tag">Discord</span>
+              <span class="tag">Desktop</span>
+            </div>
+            <p style="margin-top:10px"><a href="https://freqx.app" target="_blank" rel="noopener noreferrer" class="btn ghost">View project</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <h2 class="section-title">Skills & tools</h2>
+      <div class="tech-logos">
+        <img src="images/github-light.svg" alt="GitHub">
+        <img src="images/nodejs.svg" alt="Node.js">
+        <img src="images/npm-wordmark.svg" alt="NPM">
+        <img src="images/insomnia.svg" alt="Insomnia">
+        <img src="images/mongodb.svg" alt="MongoDB">
+        <img src="images/discord.svg" alt="Discord">
+        <img src="images/javascript.svg" alt="JS">
+        <img src="images/python.svg" alt="Python">
+        <img src="images/expressjs-light.svg" alt="ExpressJS">
+        <img src="images/html5.svg" alt="HTML">
+        <img src="images/css3.svg" alt="CSS">
+        <img src="images/Docker.svg" alt="Docker">
+        <img src="images/Vercel.svg" alt="Vercel">
+        <img src="images/Cloudflare.svg" alt="Cloudflare">
+        <img src="images/Digital Ocean.svg" alt="DigitalOcean">
+      </div>
+      <div class="cards" style="gap:16px">
+        <article class="card reveal">
+          <div>
+            <h3>Languages</h3>
+            <p>JavaScript (ES6+), TypeScript, C++, Python, HTML5, CSS3</p>
+          </div>
+        </article>
+        <article class="card reveal">
+          <div>
+            <h3>Frameworks &amp; Libraries</h3>
+            <p>Express.js, Next.js, React, Discord.js</p>
+          </div>
+        </article>
+        <article class="card reveal">
+          <div>
+            <h3>Databases &amp; APIs</h3>
+            <p>MongoDB (Mongoose ODM), REST APIs, SQL basics</p>
+          </div>
+        </article>
+        <article class="card reveal">
+          <div>
+            <h3>DevOps &amp; Cloud</h3>
+            <p>Docker, Git, GitHub Actions, Vercel, Cloudflare, DigitalOcean</p>
+          </div>
+        </article>
+        <article class="card reveal" style="grid-column: span 2;">
+          <div>
+            <h3>Backend Architecture &amp; Automation</h3>
+            <p>OAuth2, JWT Authentication, WebSocket Protocol, Event-Driven Architectures, Scripting, Web Scraping, and automation pipelines</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="contact" class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <img class="footer-logo" src="images/Main.png" alt="logo" style="margin-bottom:10px;">
+        <p style="color:var(--ink);font-weight:500;">Nguyen Dinh Nhat Nguyen</p>
+        <p style="color:var(--ink-soft);font-size:.88rem;">Email: <a href="mailto:nguyend.nhatnguyen@gmail.com" style="text-decoration:none;color:var(--accent);">nguyend.nhatnguyen@gmail.com</a></p>
+        <p style="color:var(--ink-soft);font-size:.88rem;">Location: Jyväskylä, Finland</p>
+      </div>
+      <div class="footer-links">
+        <a href="#hero">Summary</a>
+        <a href="#project">Projects</a>
+        <a href="#skills">Skills</a>
+      </div>
+      <div class="social" style="display: flex; gap: 12px; align-items: center;">
+        <div class="fix-firefox">
+          <a href="https://github.com/reallav0" target="_blank" rel="noopener noreferrer"><img src="images/github-light.svg" class="footer-logo" alt="GitHub"></a>
+        </div>
+        <div class="fix-firefox">
+          <a href="https://discord.gg/HkEsKHyghn" target="_blank" rel="noopener noreferrer"><img src="images/discord.svg" class="footer-logo" alt="Discord"></a>
         </div>
       </div>
-      <small class="copyright">© 2025 av0 — All rights reserved</small>
-    </footer>
+    </div>
+    <small class="copyright">© 2026 av0 — All rights reserved</small>
+  </footer>
 
   <script>
+    /* ── Mobile menu ── */
     const btn = document.getElementById('menuBtn');
-    btn && btn.addEventListener('click', ()=> {
-      document.querySelector('.main-nav')?.classList.toggle('open');
+    const mainNav = document.getElementById('mainNav');
+    btn && btn.addEventListener('click', () => {
+      mainNav.classList.toggle('open');
+      const icon = btn.querySelector('i');
+      icon.classList.toggle('bi-list');
+      icon.classList.toggle('bi-x');
     });
 
-    // Smooth scroll with header offset for in-page links
-    document.querySelectorAll('.main-nav a[href^="#"], a[href^="#"]').forEach(link => {
-      link.addEventListener('click', (e) => {
+    /* ── Smooth scroll ── */
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
         const targetId = link.getAttribute('href');
         if (!targetId || targetId === '#') return;
         const target = document.querySelector(targetId);
         if (!target) return;
         e.preventDefault();
         const header = document.querySelector('.site-header');
-        const headerHeight = header ? header.getBoundingClientRect().height : 0;
-        const offset = Math.max(0, headerHeight + 8); // small gap under header
-        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        const headerH = header ? header.getBoundingClientRect().height : 0;
+        const top = target.getBoundingClientRect().top + window.scrollY - headerH - 8;
         window.scrollTo({ top, behavior: 'smooth' });
-        // close mobile menu if open
-        document.querySelector('.main-nav')?.classList.remove('open');
+        mainNav?.classList.remove('open');
+        const icon = btn?.querySelector('i');
+        if (icon) { icon.classList.add('bi-list'); icon.classList.remove('bi-x'); }
       });
     });
+
+    /* ── Scroll reveal ── */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: .08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
