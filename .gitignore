@@ -1,0 +1,9 @@
+/dist/
+/output/*
+!/output/playwright/
+/output/playwright/*
+!/output/playwright/excrow-current.png
+/.playwright-cli/
+/node_modules/
+*.tsbuildinfo
+.DS_Store
