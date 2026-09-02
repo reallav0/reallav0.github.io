@@ -39,6 +39,7 @@ The custom domain is stored in `public/CNAME`. Vite copies it into the productio
 
 ## Content and visual assets
 
+- Display typography uses the self-hosted, OFL-licensed Doto variable font as a legally reusable Nothing-inspired treatment. Its license is included at `public/fonts/Doto-OFL.txt`; compact interface copy continues to use the system font stack for readability.
 - `output/playwright/excrow-current.png` is an authorized capture of the public Excrow homepage and is bundled by Vite into the project showcase.
 - FreqX does not currently publish an interface screenshot, so the site uses a clearly described product visualization based on its documented soundboard, hotkey, mixer, and routing features. Replace it with a real app capture when one is available.
 - `public/social-preview.png` is the 1200×630 Open Graph image used by social platforms.
