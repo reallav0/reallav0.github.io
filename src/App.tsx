@@ -19,6 +19,7 @@ import {
   SiTypescript,
 } from "react-icons/si";
 import excrowScreenshot from "../output/playwright/excrow-current.png";
+import SystemSculpture from "./components/SystemSculpture";
 
 const links = {
   github: "https://github.com/reallav0",
@@ -172,6 +173,15 @@ function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const menuRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 761px)");
+    const closeOnDesktop = () => { if (desktop.matches) setMenuOpen(false); };
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => desktop.removeEventListener("change", closeOnDesktop);
+  }, []);
 
   useEffect(() => {
     let frame = 0;
@@ -207,12 +217,22 @@ function Navigation() {
   useEffect(() => {
     if (!menuOpen) return;
     const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const onKeyDown = (event: KeyboardEvent) => event.key === "Escape" && setMenuOpen(false);
+    document.body.style.overflowY = "hidden";
+    menuRef.current?.querySelector<HTMLAnchorElement>("a")?.focus({ preventScroll: true });
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+      if (event.key !== "Tab") return;
+      const items = [menuButtonRef.current, ...Array.from(menuRef.current?.querySelectorAll<HTMLAnchorElement>("a") ?? [])].filter((item): item is HTMLButtonElement | HTMLAnchorElement => Boolean(item));
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    };
     window.addEventListener("keydown", onKeyDown);
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKeyDown);
+      menuButtonRef.current?.focus({ preventScroll: true });
     };
   }, [menuOpen]);
 
@@ -220,8 +240,7 @@ function Navigation() {
     <header className={`site-nav${scrolled ? " is-scrolled" : ""}`} data-active={activeSection || undefined}>
       <div className="site-nav__bar">
         <a className="brand" href="#top" aria-label="av0, back to top">
-          <span className="brand__monogram" aria-hidden="true">av0</span>
-          <span>av0</span>
+          <span>av0</span><span className="brand__suffix" aria-hidden="true">(🥑)</span>
         </a>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
@@ -234,12 +253,12 @@ function Navigation() {
 
         <div className="nav-actions">
           <button className="icon-button" type="button" onClick={toggleTheme} aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`} aria-pressed={theme === "dark"}><Icon name={theme === "dark" ? "sun" : "moon"} /></button>
-          <button className="icon-button menu-button" type="button" onClick={() => setMenuOpen((open) => !open)} aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} aria-controls="mobile-navigation"><Icon name={menuOpen ? "close" : "menu"} /></button>
+          <button ref={menuButtonRef} className="icon-button menu-button" type="button" onClick={() => setMenuOpen((open) => !open)} aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} aria-controls="mobile-navigation"><Icon name={menuOpen ? "close" : "menu"} /></button>
         </div>
       </div>
 
-      <button className={`mobile-nav__scrim${menuOpen ? " is-open" : ""}`} type="button" onClick={() => setMenuOpen(false)} aria-label="Close navigation" tabIndex={menuOpen ? 0 : -1} />
-      <nav id="mobile-navigation" className={`mobile-nav${menuOpen ? " is-open" : ""}`} aria-label="Mobile navigation" aria-hidden={!menuOpen}>
+      <button className={`mobile-nav__scrim${menuOpen ? " is-open" : ""}`} type="button" onClick={() => setMenuOpen(false)} aria-label="Close navigation" tabIndex={-1} />
+      <nav ref={menuRef} id="mobile-navigation" className={`mobile-nav${menuOpen ? " is-open" : ""}`} aria-label="Mobile navigation" aria-hidden={!menuOpen}>
         <p>Navigate</p>
         {navLinks.map((link, index) => (
           <a href={link.href} onClick={() => setMenuOpen(false)} key={link.id} tabIndex={menuOpen ? 0 : -1}>{link.label}<span>0{index + 1}</span></a>
@@ -253,7 +272,6 @@ function Navigation() {
 function WindowChrome({ title, status }: { title: string; status?: string }) {
   return (
     <div className="window-chrome">
-      <span className="window-controls" aria-hidden="true"><i /><i /><i /></span>
       <span className="window-title">{title}</span>
       {status && <span className="window-status"><i aria-hidden="true" />{status}</span>}
     </div>
@@ -264,7 +282,7 @@ function FreqxInterface({ compact = false }: { compact?: boolean }) {
   const pads = ["A", "S", "D", "F", "G", "H", "J", "K"];
   return (
     <div className={`freqx-window${compact ? " freqx-window--compact" : ""}`} aria-hidden="true">
-      <WindowChrome title="FreqX" status="AUDIO READY" />
+      <WindowChrome title="freqx (01)" status="SOUNDBOARD" />
       <div className="freqx-ui">
         <aside className="freqx-sidebar">
           <span className="freqx-mark"><Icon name="volume" /></span>
@@ -272,7 +290,7 @@ function FreqxInterface({ compact = false }: { compact?: boolean }) {
           <span className="freqx-sidebar__spacer" /><span className="freqx-avatar" />
         </aside>
         <div className="freqx-workspace">
-          <div className="freqx-toolbar"><div><strong>Soundboard</strong><small>8 sounds</small></div><span className="freqx-search">Search sounds</span></div>
+          <div className="freqx-toolbar"><div><strong>Make some noise.</strong><small>YOUR SOUNDS. ONE OUTPUT.</small></div><span className="freqx-search"><Icon name="volume" /></span></div>
           <div className="freqx-pads" aria-hidden="true">
             {pads.map((pad, index) => <span className={`freqx-pad freqx-pad--${(index % 4) + 1}`} key={pad}><i className="freqx-pad__wave" /><b>{pad}</b></span>)}
           </div>
@@ -290,11 +308,6 @@ function FreqxInterface({ compact = false }: { compact?: boolean }) {
 function ExcrowBrowser({ hero = false }: { hero?: boolean }) {
   return (
     <div className={`excrow-browser${hero ? " excrow-browser--hero" : ""}`}>
-      <div className="browser-chrome">
-        <span className="window-controls" aria-hidden="true"><i /><i /><i /></span>
-        <span className="browser-address"><Icon name="lock" />excrow.xyz</span>
-        <span className="browser-menu" aria-hidden="true">•••</span>
-      </div>
       <img src={excrowScreenshot} width="1440" height="900" alt={hero ? "" : "Current Excrow product interface showing its crypto escrow workflow"} loading={hero ? "eager" : "lazy"} />
     </div>
   );
@@ -303,10 +316,9 @@ function ExcrowBrowser({ hero = false }: { hero?: boolean }) {
 function HeroStage() {
   return (
     <figure className="hero-stage" aria-labelledby="hero-stage-caption">
-      <span className="hero-stage__light" aria-hidden="true" />
-      <div className="hero-stage__secondary" aria-hidden="true"><ExcrowBrowser hero /></div>
-      <div className="hero-stage__primary"><FreqxInterface compact /></div>
-      <figcaption id="hero-stage-caption" className="sr-only">A product montage featuring a FreqX interface visualization and the current Excrow web interface.</figcaption>
+      <div className="hero-stage__label" aria-hidden="true"><span>av0 / SYSTEM (01)</span><span>INTERFACE → INFRASTRUCTURE</span></div>
+      <SystemSculpture />
+      <figcaption id="hero-stage-caption" className="sr-only">An interactive, layered hardware sculpture representing interface, application logic, and infrastructure.</figcaption>
     </figure>
   );
 }
@@ -318,31 +330,6 @@ function TextLink({ href, children, primary = false }: { href: string; children:
 function App() {
   const year = new Date().getFullYear();
   const [philosophyIndex, setPhilosophyIndex] = useState(0);
-  const revealObserver = useRef<IntersectionObserver | null>(null);
-
-  useEffect(() => {
-    const targets = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      targets.forEach((target) => target.classList.add("is-visible"));
-      return;
-    }
-    revealObserver.current = new IntersectionObserver(
-      (entries) => entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        revealObserver.current?.unobserve(entry.target);
-      }),
-      { rootMargin: "0px 0px -10%", threshold: 0.08 },
-    );
-    targets.forEach((target) => revealObserver.current?.observe(target));
-    return () => revealObserver.current?.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = window.setInterval(() => setPhilosophyIndex((index) => (index + 1) % 3), 3400);
-    return () => window.clearInterval(timer);
-  }, []);
 
   return (
     <>
@@ -351,38 +338,38 @@ function App() {
       <main id="main">
         <section className="hero" id="top" aria-labelledby="hero-title">
           <div className="hero__copy page-shell">
-            <p className="eyebrow hero__eyebrow">av0 · Full-stack developer</p>
-            <h1 id="hero-title">I build software<br /><span>that feels finished.</span></h1>
-            <p className="hero__intro">Products, systems, and experiences—from the interface to the infrastructure behind it.</p>
+            <p className="eyebrow hero__eyebrow"><i aria-hidden="true" />Independent developer</p>
+            <h1 id="hero-title">I build <br />software <br /><span>that feels <br />finished.</span></h1>
+            <p className="hero__intro">Thoughtful interfaces. Dependable systems. Full-stack products, built from the inside out.</p>
             <div className="hero__actions">
-              <a className="button button--primary" href="#projects">View my work<Icon name="arrow-down" /></a>
+              <a className="button button--primary" href="#projects">Explore my work<Icon name="arrow-down" /></a>
               <a className="button button--quiet" href={links.github} target="_blank" rel="noopener noreferrer"><SiGithub aria-hidden="true" />GitHub</a>
             </div>
           </div>
           <HeroStage />
         </section>
 
-        <section className="work page-shell" id="projects" aria-labelledby="projects-title">
+        <section className="work" id="projects" aria-labelledby="projects-title">
           <header className="section-intro" data-reveal>
-            <p className="eyebrow">Selected work</p><h2 id="projects-title">Products built to be used.</h2><p>Two different problems. The same attention to how the whole thing works.</p>
+            <h2 id="projects-title">Selected work <span>(02)</span></h2><p>Different problems. The same attention to detail.</p>
           </header>
 
           <article className="project project--freqx" aria-labelledby="freqx-title">
-            <div className="project-stage project-stage--freqx" data-reveal><FreqxInterface /></div>
+            <div className="project-stage project-stage--freqx" data-reveal><div className="stage-caption"><span>FREQX / DESKTOP AUDIO</span><span>(01)</span></div><FreqxInterface /><span className="visualization-note">SOUNDBOARD CONCEPT VISUALIZATION</span></div>
             <div className="project-meta" data-reveal>
               <div className="project-meta__title"><p>01 / Desktop product</p><h3 id="freqx-title">FreqX</h3><strong>Your sounds. Instantly accessible.</strong></div>
               <div className="project-meta__body">
                 <p>A Windows soundboard that brings a live microphone and local effects into one Discord-ready output. Boards, hotkeys, per-sound controls, routing, and a custom import protocol keep the experience immediate.</p>
                 <ul className="tag-list" aria-label="FreqX technologies"><li>Electron</li><li>JavaScript</li><li>Desktop audio</li><li>Custom protocol</li></ul>
                 <div className="project-links"><TextLink href={links.freqx} primary>View source</TextLink><TextLink href={links.freqxRelease}>Windows release</TextLink></div>
-                <p className="project-note">The product website is currently offline; the source and latest release remain available.</p>
+                <p className="project-note">Product website currently offline. Source and Windows release available on GitHub.</p>
               </div>
             </div>
           </article>
 
           <article className="project project--excrow" aria-labelledby="excrow-title">
             <div className="project-stage project-stage--excrow" data-reveal>
-              <span className="excrow-aura" aria-hidden="true" /><ExcrowBrowser />
+              <div className="stage-caption"><span>EXCROW / WEB PRODUCT</span><span>(02)</span></div><ExcrowBrowser />
               <div className="deployment-rail" aria-label="Excrow deployment stack"><span>Cloudflare</span><i /><span>Nginx</span><i /><span>Docker</span><i /><span>Node.js</span></div>
             </div>
             <div className="project-meta" data-reveal>
@@ -398,9 +385,9 @@ function App() {
 
         <section className="about" id="about" aria-labelledby="about-title">
           <div className="page-shell">
-            <p className="eyebrow" data-reveal>About</p>
-            <h2 id="about-title" data-reveal>I started coding in sixth grade. <span>By eighth, I was already building for other people.</span></h2>
+            <div className="about__heading"><h2 id="about-title" data-reveal>Curiosity.<br />Then code.</h2><span className="about__signature" aria-hidden="true">av0 ( )</span></div>
             <div className="about__details" data-reveal>
+              <p className="about__lead">I started coding in sixth grade. By eighth, I was already building for other people.</p>
               <p>I wanted to understand how software worked. That curiosity became years of real projects: interfaces, backend systems, automations, desktop tools, infrastructure, and experiments that began with a useful question.</p>
               <p>I like working across the seams—where product thinking meets engineering, where a polished frontend depends on dependable system behavior, and where shipping is part of the craft.</p>
             </div>
@@ -409,12 +396,12 @@ function App() {
         </section>
 
         <section className="skills page-shell" id="skills" aria-labelledby="skills-title">
-          <header className="section-intro section-intro--skills" data-reveal><p className="eyebrow">Capabilities</p><h2 id="skills-title">The stack behind the work.</h2><p>Grouped by responsibility, not by logo count.</p></header>
+          <header className="section-intro section-intro--skills" data-reveal><h2 id="skills-title">Behind the build.</h2><p>From the first interaction to the final deployment.</p></header>
           <div className="capability-rack">
             {capabilities.map((capability, index) => (
               <section className="capability-row" aria-labelledby={`capability-${index}`} data-reveal key={capability.name}>
                 <div className="capability-row__intro"><span>0{index + 1}</span><div><h3 id={`capability-${index}`}>{capability.name}</h3><p>{capability.description}</p></div></div>
-                <ul className="capability-row__tools">{capability.items.map((item) => <li tabIndex={0} key={item.name}><span aria-hidden="true">{item.icon}</span>{item.name}</li>)}</ul>
+                <ul className="capability-row__tools">{capability.items.map((item) => <li key={item.name}><span aria-hidden="true">{item.icon}</span>{item.name}</li>)}</ul>
               </section>
             ))}
           </div>
@@ -422,18 +409,19 @@ function App() {
 
         <section className="philosophy" aria-label="Build philosophy" data-reveal>
           <div className="page-shell philosophy__inner">
-            <p className="eyebrow">Working principles</p>
+            <span className="philosophy__label">A SIMPLE APPROACH</span>
             <div className="philosophy__phrases" aria-live="off">
               {["Build real things.", "Learn by shipping.", "Keep moving."].map((phrase, index) => <p className={philosophyIndex === index ? "is-active" : undefined} aria-hidden={philosophyIndex !== index} key={phrase}>{phrase}</p>)}
             </div>
             <p className="philosophy__aside">Make technology useful.<br />Explore what is possible.</p>
+            <div className="philosophy__controls" aria-label="Working principles">{["Build real things.", "Learn by shipping.", "Keep moving."].map((phrase, index) => <button type="button" aria-label={phrase} aria-pressed={philosophyIndex === index} onClick={() => setPhilosophyIndex(index)} key={phrase}>0{index + 1}</button>)}</div>
           </div>
         </section>
       </main>
 
       <footer className="contact" id="contact" aria-labelledby="contact-title">
         <div className="page-shell contact__inner">
-          <p className="eyebrow">Start a conversation</p><h2 id="contact-title">Let’s make something useful.</h2>
+          <h2 id="contact-title">Something in mind?</h2>
           <p>I’m interested in ambitious ideas, interesting products, and technical challenges with real edges.</p>
           <a className="button button--light" href={links.github} target="_blank" rel="noopener noreferrer"><SiGithub aria-hidden="true" />Find me on GitHub<Icon name="arrow" /></a>
           <div className="contact__footer"><a href="#top">av0</a><span>Software Developer · English / Vietnamese</span><span>© {year}</span></div>

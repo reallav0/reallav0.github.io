@@ -1,12 +1,58 @@
 [
   {
+    "date": "2026-09-05",
+    "macrostructure": "Split Studio",
+    "theme": "studied-DNA",
+    "source": "https://fi.nothing.tech/",
+    "theme_axes": "light / dot-matrix / warm-red",
+    "genre": "modern-minimal",
+    "enrichment": "Original procedural Three.js system module with SVG fallback",
+    "nav": "Compact technical bar",
+    "footer": "Ft2 Inline",
+    "brief": "Nothing-inspired av0 portfolio with interactive 3D and static GitHub Pages deployment"
+  },
+  {
+    "date": "2026-09-01",
+    "macrostructure": "Marquee Hero",
+    "theme": "custom",
+    "theme_axes": "light / geometric-sans / warm",
+    "vibe": "cinematic restraint, tactile precision, quiet warmth",
+    "genre": "modern-minimal",
+    "enrichment": "E5 functional full-stack illustration · Tier A CSS/SVG",
+    "nav": "N10 Floating-on-scroll morph",
+    "footer": "Ft5 Statement",
+    "brief": "Apple-inspired personal developer portfolio for Wade Nguyen with factual FreqX and Excrow product stories"
+  },
+  {
+    "date": "2026-08-27",
+    "macrostructure": "Feature Stack",
+    "theme": "custom",
+    "theme_axes": "light / system-native / cool",
+    "vibe": "cinematic monochrome, precise, spacious, product-led",
+    "genre": "modern-minimal product storytelling",
+    "enrichment": "existing Excrow product capture only",
+    "nav": "N1b Compact three-section",
+    "footer": "Ft1 Mast-headed",
+    "brief": "Apple-inspired anonymous portfolio with FreqX as the flagship product story"
+  },
+  {
+    "date": "2026-08-27",
+    "macrostructure": "Index-First",
+    "theme": "restrained day/night",
+    "genre": "editorial work log",
+    "enrichment": "existing Excrow product capture only",
+    "nav": "N1 Wordmark plus two links",
+    "footer": "Ft2 Inline-rule single line",
+    "brief": "plain anonymous work log with FreqX featured and minimal visual treatment"
+  },
+  {
     "date": "2026-07-27",
     "macrostructure": "Portfolio Grid",
     "theme": "Cobalt",
-    "enrichment": "existing FreqX and Excrow product captures",
+    "enrichment": "existing product captures",
     "nav": "N13 Inline command palette",
     "footer": "Ft5 Statement",
-    "brief": "av0 portfolio with persistent dark mode, Discord contact, and featured product work"
+    "brief": "pseudonymous portfolio with persistent dark mode and featured product work"
   },
   {
     "date": "2026-07-16",
@@ -15,6 +61,6 @@
     "enrichment": "existing project imagery",
     "nav": "N9 Edge-aligned minimal",
     "footer": "Ft6 Letter close",
-    "brief": "Luxury developer portfolio for internship offers and freelance inquiries"
+    "brief": "developer portfolio for work and collaboration inquiries"
   }
 ]

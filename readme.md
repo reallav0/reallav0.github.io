@@ -1,6 +1,6 @@
 # av0 — Software Developer
 
-A premium, responsive portfolio for av0, built with React, TypeScript, and Vite. The site is fully static and deploys to GitHub Pages.
+A Nothing-inspired portfolio for av0, built with React, TypeScript, Vite, and Three.js. Dot-matrix typography, monochrome product panels, and an original interactive hardware sculpture give the site its industrial visual language. The site is fully static and deploys to GitHub Pages.
 
 ## Local development
 
@@ -28,6 +28,14 @@ npm run check
 ```
 
 This runs TypeScript validation, the token contrast audit, and a fresh production build.
+
+To check the production build under a repository subpath, run `npm run preview:subpath` and open `http://127.0.0.1:4180/portfolio/`.
+
+## Interactive 3D
+
+`src/components/SystemSculpture.tsx` constructs the hero entirely from procedural Three.js geometry. Drag horizontally on touch, drag with a mouse, or focus the model and use arrow keys to rotate it. **Explode view** separates its interface, logic, and infrastructure layers. **Pause** stops idle motion; **Reset view** (or Home while focused) restores the camera-facing orientation.
+
+Three.js loads in a separate JavaScript chunk. No model server, CDN, API keys, or backend are required. A static SVG preview is displayed while loading and when WebGL is unavailable. Rendering pauses outside the viewport and in hidden tabs, pixel density is capped, and reduced-motion preferences disable ambient animation. A reduced-motion visitor can still manipulate the model and its layers directly.
 
 ## Deploying to GitHub Pages
 

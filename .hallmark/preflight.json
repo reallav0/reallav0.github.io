@@ -1,28 +1,29 @@
 {
-  "date": "2026-07-16",
-  "target": "index.html",
-  "framework": "vanilla HTML and CSS",
-  "font_stack": {
-    "before": "Space Grotesk and Inter",
-    "source": "index.html:9",
-    "decision": "replaced for the requested luxury redesign"
+  "date": "2026-09-01",
+  "target": "src/App.tsx",
+  "framework": "React 19, TypeScript 7, and Vite 8",
+  "route_model": "single static portfolio page with relative production assets and one legacy projects redirect",
+  "design_context": {
+    "audience": "potential collaborators, clients, and technical reviewers",
+    "use": "understand Wade Nguyen's product range, technical depth, and working style, then visit a project or GitHub",
+    "tone": "cinematic, technically sophisticated, warm, minimal, and product-led"
   },
-  "palette": {
-    "before": "dark neutral with gold accent",
-    "source": "index.css:7",
-    "decision": "replaced with Atelier warm ivory and oxblood tokens"
-  },
-  "motion": {
-    "library": null,
-    "stance": "motion-cut",
-    "source": "package.json:23"
-  },
-  "spacing": {
-    "before": "ad hoc values",
-    "decision": "Hallmark 4-point semantic scale"
-  },
-  "notes": [
-    "Existing project links, screenshots, service facts, FAQ facts, and visitor counter were preserved.",
-    "Inline CSS was removed from index.html so index.css is the single styling source."
-  ]
+  "preserved": [
+    "the av0.dev custom domain",
+    "verified FreqX product capabilities and source link",
+    "verified Excrow workflow and live product link",
+    "light and dark theme support",
+    "the user's existing working-tree history"
+  ],
+  "introduced": [
+    "Wade Nguyen's supplied identity and bilingual profile",
+    "a Marquee Hero with a semantic full-stack system illustration",
+    "original CSS and SVG product visuals for FreqX and Excrow",
+    "a connected technology field instead of a logo grid",
+    "a floating-on-scroll navigation treatment",
+    "a GitHub Pages Actions deployment workflow and relative Vite base",
+    "an accessible social preview, focus system, reduced-motion fallback, and token contrast audit"
+  ],
+  "content_policy": "No fake metrics, testimonials, business claims, email address, source link, or availability claim was introduced.",
+  "slop_test": "58/58 pass"
 }
