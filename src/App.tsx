@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   SiCloudflare,
   SiCss,
@@ -19,6 +19,7 @@ import {
   SiTypescript,
 } from "react-icons/si";
 import excrowScreenshot from "../output/playwright/excrow-current.png";
+import freqxIntroduction from "./assets/freqx-introduction.mp4";
 import SystemSculpture from "./components/SystemSculpture";
 
 const links = {
@@ -269,42 +270,6 @@ function Navigation() {
   );
 }
 
-function WindowChrome({ title, status }: { title: string; status?: string }) {
-  return (
-    <div className="window-chrome">
-      <span className="window-title">{title}</span>
-      {status && <span className="window-status"><i aria-hidden="true" />{status}</span>}
-    </div>
-  );
-}
-
-function FreqxInterface({ compact = false }: { compact?: boolean }) {
-  const pads = ["A", "S", "D", "F", "G", "H", "J", "K"];
-  return (
-    <div className={`freqx-window${compact ? " freqx-window--compact" : ""}`} aria-hidden="true">
-      <WindowChrome title="freqx (01)" status="SOUNDBOARD" />
-      <div className="freqx-ui">
-        <aside className="freqx-sidebar">
-          <span className="freqx-mark"><Icon name="volume" /></span>
-          <span className="freqx-nav-line is-active" /><span className="freqx-nav-line" /><span className="freqx-nav-line is-short" />
-          <span className="freqx-sidebar__spacer" /><span className="freqx-avatar" />
-        </aside>
-        <div className="freqx-workspace">
-          <div className="freqx-toolbar"><div><strong>Make some noise.</strong><small>YOUR SOUNDS. ONE OUTPUT.</small></div><span className="freqx-search"><Icon name="volume" /></span></div>
-          <div className="freqx-pads" aria-hidden="true">
-            {pads.map((pad, index) => <span className={`freqx-pad freqx-pad--${(index % 4) + 1}`} key={pad}><i className="freqx-pad__wave" /><b>{pad}</b></span>)}
-          </div>
-          <div className="freqx-mixer">
-            <span><i style={{ "--level": "72%" } as CSSProperties} />Mic</span>
-            <span><i style={{ "--level": "48%" } as CSSProperties} />Effects</span>
-            <span className="freqx-output"><em aria-hidden="true" />Virtual output</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function ExcrowBrowser({ hero = false }: { hero?: boolean }) {
   return (
     <div className={`excrow-browser${hero ? " excrow-browser--hero" : ""}`}>
@@ -355,7 +320,14 @@ function App() {
           </header>
 
           <article className="project project--freqx" aria-labelledby="freqx-title">
-            <div className="project-stage project-stage--freqx" data-reveal><div className="stage-caption"><span>FREQX / DESKTOP AUDIO</span><span>(01)</span></div><FreqxInterface /><span className="visualization-note">SOUNDBOARD CONCEPT VISUALIZATION</span></div>
+            <div className="project-stage project-stage--freqx" data-reveal>
+              <div className="stage-caption"><span>FREQX / DESKTOP AUDIO</span><span>(01)</span></div>
+              <video className="freqx-video" controls playsInline preload="metadata" aria-label="FreqX introduction">
+                <source src={freqxIntroduction} type="video/mp4" />
+                <a href={freqxIntroduction}>Watch the FreqX introduction video</a>
+              </video>
+              <span className="visualization-note">FREQX INTRODUCTION</span>
+            </div>
             <div className="project-meta" data-reveal>
               <div className="project-meta__title"><p>01 / Desktop product</p><h3 id="freqx-title">FreqX</h3><strong>Your sounds. Instantly accessible.</strong></div>
               <div className="project-meta__body">
