@@ -26,7 +26,7 @@ const links = {
   github: "https://github.com/reallav0",
   freqx: "https://github.com/reallav0/freqx",
   freqxRelease: "https://github.com/reallav0/freqx/releases/tag/1.6.0",
-  excrow: "https://excrow.xyz",
+  excrow: "https://github.com/reallav0/excrow-backend",
 } as const;
 
 const themeStorageKey = "av0-portfolio-theme";
@@ -349,7 +349,7 @@ function App() {
               <div className="project-meta__body">
                 <p>A web product that brings agreement, funding, release, and dispute handling into one legible flow, backed by a production-minded full-stack deployment.</p>
                 <ul className="tag-list" aria-label="Excrow technologies"><li>Node.js</li><li>Express.js</li><li>Docker</li><li>Nginx</li><li>SSL</li><li>Cloudflare</li></ul>
-                <div className="project-links"><TextLink href={links.excrow} primary>Visit project</TextLink></div>
+                <div className="project-links"><TextLink href={links.excrow} primary>View source</TextLink></div>
               </div>
             </div>
           </article>
