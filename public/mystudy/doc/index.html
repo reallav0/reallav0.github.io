@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:,">
+  <title>Information Security Technologies Exam Study Guide | Study notes</title>
+  <link rel="stylesheet" href="./reader.css">
+  <script src="./reader.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#document">Skip to document</a>
+  <header class="reader-header">
+    <a class="reader-name" href="#top">Study notes <span>Weeks 36–47</span></a>
+    <a class="download" href="./study-guide.docx" download>Download Word file</a>
+  </header>
+  <div class="reader-layout">
+    <aside>
+      <details class="contents">
+        <summary>Contents</summary>
+        <nav aria-label="Document contents"><ul><li class="level-2"><a href="#start-here">Start here</a></li>
+<li class="level-2"><a href="#week-36-firewalls">Week 36 Firewalls</a></li>
+<li class="level-3"><a href="#purpose-and-rule-decisions">Purpose and rule decisions</a></li>
+<li class="level-3"><a href="#stateless-stateful-and-application-aware-filtering">Stateless stateful and application aware filtering</a></li>
+<li class="level-3"><a href="#nat-pat-and-port-forwarding">NAT PAT and port forwarding</a></li>
+<li class="level-3"><a href="#other-features">Other features</a></li>
+<li class="level-2"><a href="#lab-1-practical-reasoning">Lab 1 Practical reasoning</a></li>
+<li class="level-2"><a href="#week-37-vulnerabilities">Week 37 Vulnerabilities</a></li>
+<li class="level-3"><a href="#from-weakness-to-risk">From weakness to risk</a></li>
+<li class="level-3"><a href="#detection-methods-and-limits">Detection methods and limits</a></li>
+<li class="level-3"><a href="#zero-trust">Zero Trust</a></li>
+<li class="level-3"><a href="#case-study-lessons-from-the-lecture">Case study lessons from the lecture</a></li>
+<li class="level-2"><a href="#lab-2-scan-interpretation">Lab 2 Scan interpretation</a></li>
+<li class="level-3"><a href="#cve-associations-from-your-quiz">CVE associations from your quiz</a></li>
+<li class="level-2"><a href="#week-38-pki-and-certificates">Week 38 PKI and certificates</a></li>
+<li class="level-3"><a href="#pki-trust-and-keys">PKI trust and keys</a></li>
+<li class="level-3"><a href="#lab-3-workflow-and-mutual-tls">Lab 3 workflow and mutual TLS</a></li>
+<li class="level-2"><a href="#week-40-logging">Week 40 Logging</a></li>
+<li class="level-3"><a href="#lab-4-events-and-interpretation">Lab 4 events and interpretation</a></li>
+<li class="level-2"><a href="#week-41-siem">Week 41 SIEM</a></li>
+<li class="level-3"><a href="#elastic-lab">Elastic lab</a></li>
+<li class="level-2"><a href="#week-43-honeypots">Week 43 Honeypots</a></li>
+<li class="level-2"><a href="#week-44-traffic-monitoring">Week 44 Traffic monitoring</a></li>
+<li class="level-3"><a href="#tls-lab-reasoning">TLS lab reasoning</a></li>
+<li class="level-2"><a href="#week-46-proxies-and-web-application-firewalls">Week 46 Proxies and web application firewalls</a></li>
+<li class="level-2"><a href="#week-47-ids-and-ips">Week 47 IDS and IPS</a></li>
+<li class="level-2"><a href="#lab-command-and-configuration-reference">Lab command and configuration reference</a></li>
+<li class="level-3"><a href="#before-changing-a-lab">Before changing a lab</a></li>
+<li class="level-3"><a href="#lab-1-firewall-dhcp-nat-and-ssh">Lab 1 Firewall DHCP NAT and SSH</a></li>
+<li class="level-3"><a href="#lab-2-vulnerability-scanning-and-docker">Lab 2 Vulnerability scanning and Docker</a></li>
+<li class="level-3"><a href="#lab-3-pki-apache-and-mutual-tls">Lab 3 PKI Apache and mutual TLS</a></li>
+<li class="level-3"><a href="#lab-4-windows-and-linux-audit-logs">Lab 4 Windows and Linux audit logs</a></li>
+<li class="level-3"><a href="#lab-5-elastic-siem">Lab 5 Elastic SIEM</a></li>
+<li class="level-3"><a href="#lab-6-cowrie-honeypot">Lab 6 Cowrie honeypot</a></li>
+<li class="level-3"><a href="#lab-7-wireshark-and-tls-capture">Lab 7 Wireshark and TLS capture</a></li>
+<li class="level-3"><a href="#lab-8-squid-reverse-proxy-and-modsecurity">Lab 8 Squid reverse proxy and ModSecurity</a></li>
+<li class="level-3"><a href="#lab-9-suricata-ids-and-ips">Lab 9 Suricata IDS and IPS</a></li>
+<li class="level-2"><a href="#troubleshooting-commands-and-recovery">Troubleshooting commands and recovery</a></li>
+<li class="level-3"><a href="#first-identify-what-failed">First identify what failed</a></li>
+<li class="level-3"><a href="#general-shell-and-file-problems">General shell and file problems</a></li>
+<li class="level-3"><a href="#package-installation-and-disk-space">Package installation and disk space</a></li>
+<li class="level-3"><a href="#network-address-routing-dns-and-port-checks">Network address routing DNS and port checks</a></li>
+<li class="level-3"><a href="#firewall-nat-and-service-troubleshooting">Firewall NAT and service troubleshooting</a></li>
+<li class="level-3"><a href="#systemd-apache-http-and-web-problems">systemd Apache HTTP and web problems</a></li>
+<li class="level-3"><a href="#ssh-connection-and-key-failures">SSH connection and key failures</a></li>
+<li class="level-3"><a href="#tls-certificates-and-mtls">TLS certificates and mTLS</a></li>
+<li class="level-3"><a href="#docker-and-compose">Docker and Compose</a></li>
+<li class="level-3"><a href="#nmap-nikto-and-scan-results">Nmap Nikto and scan results</a></li>
+<li class="level-3"><a href="#audit-logs-and-elastic-siem">Audit logs and Elastic SIEM</a></li>
+<li class="level-3"><a href="#cowrie-honeypot">Cowrie honeypot</a></li>
+<li class="level-3"><a href="#wireshark-and-tls-capture">Wireshark and TLS capture</a></li>
+<li class="level-3"><a href="#squid-reverse-proxy-and-suricata">Squid reverse proxy and Suricata</a></li>
+<li class="level-3"><a href="#exam-troubleshooting-answer-template">Exam troubleshooting answer template</a></li>
+<li class="level-2"><a href="#practice-questions">Practice questions</a></li>
+<li class="level-3"><a href="#1-what-does-a-firewall-do-and-why-use-a-dmz">1 What does a firewall do and why use a DMZ</a></li>
+<li class="level-3"><a href="#2-compare-stateless-and-stateful-filtering">2 Compare stateless and stateful filtering</a></li>
+<li class="level-3"><a href="#3-an-allow-rule-for-tcp-80-works-but-ping-fails-is-that-contradictory">3 An allow rule for TCP 80 works but ping fails Is that contradictory</a></li>
+<li class="level-3"><a href="#4-explain-wan-ip-port-52314-to-10-1-0-150-port-22">4 Explain WAN IP port 52314 to 10 1 0 150 port 22</a></li>
+<li class="level-3"><a href="#5-why-can-ssh-pass-through-a-rule-for-tcp-8080">5 Why can SSH pass through a rule for TCP 8080</a></li>
+<li class="level-3"><a href="#6-what-is-the-difference-between-cve-and-cvss">6 What is the difference between CVE and CVSS</a></li>
+<li class="level-3"><a href="#7-a-scanner-reports-an-old-php-version-what-next">7 A scanner reports an old PHP version What next</a></li>
+<li class="level-3"><a href="#8-what-do-docker-mappings-8010-to-80-and-8022-to-22-imply">8 What do Docker mappings 8010 to 80 and 8022 to 22 imply</a></li>
+<li class="level-3"><a href="#9-describe-three-complementary-ways-to-find-vulnerabilities">9 Describe three complementary ways to find vulnerabilities</a></li>
+<li class="level-3"><a href="#10-what-are-the-three-zero-trust-principles-in-the-slides">10 What are the three Zero Trust principles in the slides</a></li>
+<li class="level-3"><a href="#11-match-logjam-poodle-and-ccs-injection-to-the-quiz-cves">11 Match Logjam POODLE and CCS injection to the quiz CVEs</a></li>
+<li class="level-3"><a href="#12-a-server-is-reachable-from-lan-but-not-externally-name-four-checks">12 A server is reachable from LAN but not externally Name four checks</a></li>
+<li class="level-3"><a href="#13-how-does-an-sbom-help-vulnerability-management">13 How does an SBOM help vulnerability management</a></li>
+<li class="level-3"><a href="#14-what-did-the-lab-teach-about-broad-scanning-rules">14 What did the lab teach about broad scanning rules</a></li>
+<li class="level-3"><a href="#15-what-lesson-connects-equifax-and-solarwinds">15 What lesson connects Equifax and SolarWinds</a></li>
+<li class="level-2"><a href="#more-practice-questions-for-weeks-38-to-47">More practice questions for Weeks 38 to 47</a></li>
+<li class="level-3"><a href="#16-what-does-a-ca-sign-and-what-stays-private">16 What does a CA sign and what stays private</a></li>
+<li class="level-3"><a href="#17-a-certificate-is-signed-by-your-internal-ca-but-the-browser-warns-why">17 A certificate is signed by your internal CA but the browser warns Why</a></li>
+<li class="level-3"><a href="#18-what-changes-with-mutual-tls">18 What changes with mutual TLS</a></li>
+<li class="level-3"><a href="#19-compare-windows-events-4688-and-4663">19 Compare Windows events 4688 and 4663</a></li>
+<li class="level-3"><a href="#20-how-do-you-make-a-useful-investigation-timeline">20 How do you make a useful investigation timeline</a></li>
+<li class="level-3"><a href="#21-what-is-normalization-in-a-siem-and-why-use-it">21 What is normalization in a SIEM and why use it</a></li>
+<li class="level-3"><a href="#22-several-failed-logins-precede-success-and-file-access-what-does-this-prove">22 Several failed logins precede success and file access What does this prove</a></li>
+<li class="level-3"><a href="#23-why-is-a-honeypot-connection-useful-and-what-is-its-risk">23 Why is a honeypot connection useful and what is its risk</a></li>
+<li class="level-3"><a href="#24-compare-capture-and-display-filters-in-wireshark">24 Compare capture and display filters in Wireshark</a></li>
+<li class="level-3"><a href="#25-can-a-captured-https-session-always-be-decrypted-with-the-server-private-key">25 Can a captured HTTPS session always be decrypted with the server private key</a></li>
+<li class="level-3"><a href="#26-forward-proxy-or-reverse-proxy">26 Forward proxy or reverse proxy</a></li>
+<li class="level-3"><a href="#27-why-can-a-waf-block-sql-injection-but-not-eliminate-the-underlying-flaw">27 Why can a WAF block SQL injection but not eliminate the underlying flaw</a></li>
+<li class="level-3"><a href="#28-compare-ids-and-ips">28 Compare IDS and IPS</a></li>
+<li class="level-3"><a href="#29-explain-false-positive-and-false-negative">29 Explain false positive and false negative</a></li>
+<li class="level-3"><a href="#30-a-suricata-drop-rule-appears-enabled-but-traffic-still-passes-what-do-you-check">30 A Suricata drop rule appears enabled but traffic still passes What do you check</a></li>
+<li class="level-3"><a href="#31-trace-a-combined-incident-from-network-to-endpoint">31 Trace a combined incident from network to endpoint</a></li>
+<li class="level-3"><a href="#32-how-do-you-prioritize-a-scanner-finding">32 How do you prioritize a scanner finding</a></li>
+<li class="level-2"><a href="#last-review-checklist">Last review checklist</a></li>
+<li class="level-2"><a href="#course-sources">Course sources</a></li></ul></nav>
+      </details>
+    </aside>
+    <main id="document" tabindex="-1">
+      <form class="search-tools" role="search" hidden>
+        <label for="document-search">Find in document</label>
+        <div class="search-row">
+          <input type="search" id="document-search" placeholder="Topic, command, or keyword" autocomplete="off" spellcheck="false">
+          <button type="button" id="previous-match" aria-label="Previous match" disabled>Previous</button>
+          <button type="submit" id="next-match" aria-label="Next match" disabled>Next</button>
+        </div>
+        <output id="search-status" aria-live="polite">Search these notes or use your browser’s Find command.</output>
+      </form>
+      <article id="study-content" aria-labelledby="document-title">
+<h1 id="document-title">Information Security Technologies Exam Study Guide</h1>
+<p>Weeks 36 to 47 | Firewalls and vulnerabilities</p>
+<p>Study the concepts first, then work through the questions without looking at the answers. These questions are informed predictions, not confirmed exam questions. Lab addresses and scan findings describe the course environment and can differ elsewhere. Weeks 39, 42, and 45 have no new lecture topic on the timetable.</p>
+<section aria-labelledby="start-here">
+<h2 id="start-here">Start here</h2>
+<ul>
+<li>Explain how firewall rules, zones, and connection state control traffic.</li>
+<li>Trace traffic through a firewall rule and a NAT or port-forward mapping. Distinguish HTTP, SSH, and ICMP ping.</li>
+<li>Explain vulnerabilities and CVEs, how scanners find possible issues, and why findings require verification.</li>
+<li>Interpret Docker port mappings, Nmap service detection, and Nikto findings.</li>
+<li>Describe Zero Trust and apply the case study lessons.</li>
+</ul>
+</section>
+<section aria-labelledby="week-36-firewalls">
+<h2 id="week-36-firewalls">Week 36 Firewalls</h2>
+<h3 id="purpose-and-rule-decisions">Purpose and rule decisions</h3>
+<p>A firewall enforces a network security policy by permitting or blocking traffic at a boundary or between zones. Rules can match interface, direction, source and destination addresses, protocol, and ports, and may log the decision. A zone groups interfaces or networks with a common trust level. A DMZ isolates systems requiring external access from the internal LAN, limiting paths available if a server is compromised.</p>
+<p>The lecture describes first matching rule behavior. Read rules in the actual configured order and note the default action and product-specific floating or quick rules. A broad earlier match can prevent a later rule from being reached. A rule allowing LAN to Internet need not allow LAN to DMZ, and permission for TCP port 80 does not automatically allow ICMP echo.</p>
+<h3 id="stateless-stateful-and-application-aware-filtering">Stateless stateful and application aware filtering</h3>
+<p>A stateless filter evaluates each packet using fields such as addresses, protocol, and ports without remembering a flow. A stateful firewall tracks connection state and can recognize return traffic belonging to an allowed connection. Both depend on policy and correct routing. A next-generation firewall may add application identification, deep inspection, IDS/IPS, URL filtering, identity-based access, and threat intelligence.</p>
+<p>Port numbers are hints, not proof of application identity. In Lab 1 SSH was deliberately configured on TCP 8080: a port-based allow rule could permit SSH even though 8080 is often associated with web traffic. Application-aware inspection can distinguish protocols when it has adequate visibility. Encryption can limit inspection; TLS inspection has privacy and deployment implications. SSH and TLS are different protocols.</p>
+<h3 id="nat-pat-and-port-forwarding">NAT PAT and port forwarding</h3>
+<p>Network address translation changes IP addresses in packets. Static NAT maps an address consistently; dynamic NAT draws from a pool; PAT multiplexes many connections using ports. NAT conserves addresses and obscures internal addressing but does not replace firewall policy. Port forwarding translates inbound destinations: for example, WAN-IP:52314 to 10.1.0.150:22. External and internal ports can differ. A matching WAN rule, route, listening service, and host firewall policy are also necessary.</p>
+<p>For the lab HTTP example, a WAN TCP request to the firewall WAN address on port 80 is redirected to the DMZ server on TCP 80. Test from the intended source after applying the rule. A successful internal test alone does not establish external access.</p>
+<h3 id="other-features">Other features</h3>
+<ul>
+<li>VPN provides encrypted remote access to an organizational network.</li>
+<li>IDS detects suspicious traffic; IPS can also block it. Detection is not perfect.</li>
+<li>A WAF examines web application traffic for threats such as injection; it complements network filtering.</li>
+<li>Logging helps explain which rule matched; URL filtering controls sites; traffic shaping manages bandwidth and quality of service.</li>
+<li>OPNsense is the FreeBSD-based firewall and router used in the lab, with NAT, VPN, segmentation, and optional IDS/IPS features.</li>
+</ul>
+</section>
+<section aria-labelledby="lab-1-practical-reasoning">
+<h2 id="lab-1-practical-reasoning">Lab 1 Practical reasoning</h2>
+<p>The lab uses LAN 10.0.0.0/24, DMZ 10.1.0.0/24, and SIEM 10.2.0.0/24, with gateway addresses ending in .1. LAN DHCP pool: 10.0.0.160–200. DMZ DHCP pool: 10.1.0.150–200. DHCP supplies an address and configuration such as gateway and DNS. Windows uses <strong>ipconfig /release</strong> and <strong>ipconfig /renew</strong>; Linux uses <strong>nmtui</strong> and <strong>ip addr</strong> to inspect its interface.</p>
+<p>RFC1918 private ranges are 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16. The lab alias !RFC1918 matches destinations outside those ranges; it is not a complete definition of every possible public or Internet destination. Separate rules permit LAN to DMZ services. Check rule order and defaults rather than assuming every rule matches every packet.</p>
+<p>Your Moodle review: Windows DHCP address 10.0.0.160; Linux 10.1.0.150. The latter was marked incorrect when entered as 10.1.0.150/24: the quiz expected only the address. Before external HTTP forwarding, Windows could reach the DMZ web page, but your outside computer could not; ping from Windows and from your computer was marked No. The external address in your attempt was 198.19.55.202. These are lab-specific observations, not universal firewall behavior.</p>
+<p>Troubleshoot client address and gateway, interface and direction, source and destination, protocol and port, rule order, NAT, server listener, host firewall, and logs. Ping tests ICMP, not HTTP or SSH. The lab checks Apache with <strong>systemctl status httpd</strong> and curl localhost. For SSH on 8080 it changes sshd configuration, SELinux port labeling, and host firewalld, then restarts the relevant service. The quiz task describes forwarding WAN TCP 52314 to DMZ TCP 22; the lab handout wording for its final task differs, so follow the wording presented in the exam.</p>
+</section>
+<section aria-labelledby="week-37-vulnerabilities">
+<h2 id="week-37-vulnerabilities">Week 37 Vulnerabilities</h2>
+<h3 id="from-weakness-to-risk">From weakness to risk</h3>
+<p>A vulnerability is a weakness that can be exploited. A threat is a potential cause of harm; an exploit is a method or code that takes advantage of a weakness; risk depends on exposure, likelihood, and impact. SQL injection targets unsafe handling of database queries; cross-site scripting (XSS) injects script into a web context; a buffer overflow can corrupt memory when input exceeds a buffer&#x27;s safe handling. Consequences include data exposure, service disruption, and system compromise.</p>
+<h3 id="detection-methods-and-limits">Detection methods and limits</h3>
+<ul>
+<li>Automated scanning: Nessus, OpenVAS, and Qualys compare observable conditions with known checks. They scale well but can miss issues or report false positives.</li>
+<li>Manual penetration testing: authorized testers investigate attack paths and business context; depth depends on scope, time, and access.</li>
+<li>Static analysis and code review examine source without executing it; examples include SonarQube and Checkmarx.</li>
+<li>Dynamic analysis and fuzzing exercise running software, including unexpected inputs, to expose runtime flaws.</li>
+<li>Dependency inventory and an SBOM record third-party components and versions for comparison with known issues. OWASP Dependency-Check is an example.</li>
+</ul>
+<p>A CVE is a standardized identifier for a publicly disclosed vulnerability. It identifies the issue; it is not itself a severity score, proof of exploitation, or proof that your installation is affected. Check the asset, version, configuration, exposure, and vendor guidance. CVSS is a severity scoring framework; a score alone is not a full risk assessment. CWE classifies types of weakness; CAPEC describes attack patterns; OWASP Top 10 highlights major web application security risks. DevSecOps integrates security into development and operations.</p>
+<h3 id="zero-trust">Zero Trust</h3>
+<p>Zero Trust assumes network location alone is insufficient for trust. Verify explicitly using identity and context, grant least privilege, and assume breach. Apply MFA and identity controls, assess device health, segment resources, monitor activity, and protect data. Microsegmentation restricts lateral movement between workloads; it does not guarantee that an attacker cannot move. Continue to authenticate and authorize relevant access requests.</p>
+<h3 id="case-study-lessons-from-the-lecture">Case study lessons from the lecture</h3>
+<ul>
+<li>Equifax: unpatched Apache Struts vulnerability. Maintain an inventory, prioritize exposed assets, patch, and verify deployment.</li>
+<li>SolarWinds: malicious code in Orion updates. Protect build and update supply chains and limit trust granted to management tools.</li>
+<li>Colonial Pipeline: compromised credentials for legacy VPN access. Strengthen remote access, remove unused accounts, require MFA, and prepare incident response.</li>
+<li>Target: compromise through a vendor. Restrict third-party access, segment networks, and monitor vendor activity.</li>
+<li>Capital One: cloud firewall misconfiguration. Review cloud access paths and permissions, monitor configurations, and limit breach impact.</li>
+</ul>
+</section>
+<section aria-labelledby="lab-2-scan-interpretation">
+<h2 id="lab-2-scan-interpretation">Lab 2 Scan interpretation</h2>
+<p>The lab uses deliberately vulnerable containers on the DMZ host. Docker -p HOST:CONTAINER maps a host TCP port to a container port: 8010:80 exposes container HTTP at host port 8010; 8022:22 exposes container SSH at host port 8022; the second target maps 8080:80. These mappings explain why an application cannot reliably be identified from the host port alone.</p>
+<p>nmap -sV -p 8080 &lt;host&gt; probes a specified port for service and version. sudo nmap --script=vuln &lt;host&gt; -oN results.nmap runs vulnerability-category scripts and saves normal-format output. nikto -h &lt;host&gt; -p 8010 examines a web service for known issues and configuration clues. Use these only on authorized systems. Validate results before remediation: a banner can be inaccurate, and a scan can produce false positives. Confirm scope, service and version, vendor advisories, and configuration.</p>
+<p>The quiz identified SSH on 8022 and HTTP on 8010, PHP/5.2.4-2ubuntu5.10 in the X-Powered-By header, exposed phpMyAdmin, and TRACE associated with possible Cross-Site Tracing. A TRACE response or version banner is a clue, not by itself proof of a successful exploit. Limit access to administration interfaces and remove unnecessary features. In the lab, <strong>docker exec target1 /etc/init.d/ssh start</strong> starts SSH inside the container. After testing, remove the temporary broad scan rule and stop/remove the deliberately vulnerable targets.</p>
+<h3 id="cve-associations-from-your-quiz">CVE associations from your quiz</h3>
+<ul>
+<li>Logjam: CVE-2015-4000. The quiz associates it with the SMTP scan.</li>
+<li>POODLE: CVE-2014-3566. The quiz lists it for SMTP and PostgreSQL findings.</li>
+<li>OpenSSL CCS injection: CVE-2014-0224. The quiz lists it for PostgreSQL.</li>
+<li>Anonymous Diffie-Hellman finding: the quiz answer was “No CVE assigned” for that specific finding. Not every insecure configuration has a CVE.</li>
+</ul>
+</section>
+<section aria-labelledby="week-38-pki-and-certificates">
+<h2 id="week-38-pki-and-certificates">Week 38 PKI and certificates</h2>
+<h3 id="pki-trust-and-keys">PKI trust and keys</h3>
+<p>Public key infrastructure (PKI) manages certificates, public and private keys, issuance, and revocation. A certificate authority (CA) signs a certificate binding a public key to an identity. A registration authority (RA) verifies requesters for the CA. A trust store contains trusted roots; validation builds a chain from the server certificate through any intermediate CA to a trusted root. A compromised root can undermine every certificate trusted through it.</p>
+<p>The private key stays secret and proves control through a signature; the public key verifies signatures. Depending on the scheme it can also be used for encryption. A certificate is public and includes subject, issuer, public key, validity, and typically Subject Alternative Names (SANs) and usage constraints. Extended key usage (EKU) indicates purposes such as server authentication, client authentication, code signing, or email protection.</p>
+<p>To validate an HTTPS certificate, check chain signatures and trust, validity period, intended usage, matching hostname in SAN, and revocation status according to client policy. A CRL is a published list of revoked certificates; OCSP is a protocol for checking status. Revocation may matter when a key is compromised before the certificate expires. A valid certificate alone does not prove the site or its content is safe.</p>
+<p>Domain validation (DV) checks control of a domain; organization validation (OV) adds organization checks; extended validation (EV) involves additional checks. A self-signed certificate can encrypt traffic but is not automatically trusted. A warning may indicate an untrusted issuer, incorrect name, expired certificate, incomplete chain, or other failure; investigate rather than bypass it.</p>
+<h3 id="lab-3-workflow-and-mutual-tls">Lab 3 workflow and mutual TLS</h3>
+<p>1. Generate a server private key and CSR. The CSR contains the public key and identifying information, and is signed using the private key. It does not contain the private key.</p>
+<p>2. The lab&#x27;s OPNsense CA signs the CSR. Install the server certificate and matching private key on Apache; configure the CA chain as needed. The lab maps the test name to the DMZ address in the client hosts file and uses the matching DNS SAN.</p>
+<p>3. Trust the lab CA on the relevant client and verify the chain. Trust stores vary by application and configuration. Trusting a root gives it broad authority, so only trust a verified CA.</p>
+<p>4. Harden the lab server to TLS 1.2 and 1.3, then require a client certificate with SSLVerifyClient require. In mutual TLS (mTLS), the client authenticates the server and the server also validates a client certificate. A client certificate and corresponding private key can be distributed in a protected .p12 file.</p>
+<p>The completed quiz showed a missing required client certificate error: SSL_ERROR_RX_CERTIFICATE_REQUIRED_ALERT. Your answer was manually corrected by the teacher. This is specific to the lab and browser, not every TLS failure. Useful commands from the lab include openssl req -in request.csr -noout -text and openssl verify -CAfile CA.crt server.crt. Chain verification alone does not test every browser hostname and policy check.</p>
+</section>
+<section aria-labelledby="week-40-logging">
+<h2 id="week-40-logging">Week 40 Logging</h2>
+<p>A log records an event and its context, commonly time, source, actor, action, outcome, and relevant process or network details. Logs support operational troubleshooting, detection, forensic timelines, and audit. Key sources include Windows Security/System/Application, Linux journal and auditd, authentication services, firewalls, proxies, IDS, and application logs such as Apache access_log and error_log.</p>
+<p>Plan what to collect, why, access controls, retention, and integrity. A common pipeline is generate, collect, parse or normalize, store, analyze, alert, and report. Synchronize clocks and preserve time zones; missing, manipulated, unparsed, or late logs can mislead investigators. The lecture uses six months as an illustrative retention guideline, not a universal rule: actual retention depends on purpose, privacy, obligations, and organizational policy. Minimize personal data and restrict access.</p>
+<h3 id="lab-4-events-and-interpretation">Lab 4 events and interpretation</h3>
+<p>Windows Security event 4688 records process creation when appropriate auditing is enabled. Event 4663 can record an object access attempt when policy and the object&#x27;s audit settings are configured. The quiz&#x27;s calculator parent was C:\Windows\System32\sihost.exe, not cmd.exe; the PowerShell parent was explorer.exe. Parent process is an observed event field, not a universal answer for all launches. Your calculator path and process differ across operating systems and launch methods.</p>
+<p>In the lab, Apache access_log recorded a 404 for favicon.ico; 404 means the requested resource was not found, not automatically an attack. On Linux, auditctl -w /usr/bin/bc -p x -k calc-launch watches execution and ausearch -k calc-launch finds matching events. The lab&#x27;s file-access event showed syscall 257, an environment-specific observation. <strong>journalctl -u sshd</strong> helps inspect SSH events. Correlate timestamps, user, host, process, and event IDs across a sequence rather than treating a single entry as the complete incident.</p>
+</section>
+<section aria-labelledby="week-41-siem">
+<h2 id="week-41-siem">Week 41 SIEM</h2>
+<p>A security information and event management system centralizes events from multiple sources, normalizes fields, searches and correlates them, and raises alerts. Collection is not detection by itself. A useful workflow is source and agent setup, transport and trust, parsing, storage, query, detection rule, alert triage, and response. Validate ingestion, time range, field names, indexing delay, and rule schedule before concluding an event is absent.</p>
+<p>Example correlation: repeated failed logins (Windows 4625), a successful login (4624), sensitive-file access, then unusual outbound transfer in a short window. This could indicate compromised credentials and possible exfiltration, but is not proof. Investigate user and source identity, expected behavior, file sensitivity, destination, transfer size, endpoint activity, and timing. Tune thresholds and windows to reduce false alerts while maintaining coverage. High volume, false positives, performance, licensing, and maintenance complicate SIEM operation.</p>
+<h3 id="elastic-lab">Elastic lab</h3>
+<p>The lab enrolls Elastic Agents via Fleet on Windows and Linux, configures certificates, enables relevant system and audit integrations, and forwards firewall logs into Elastic. In Discover, search a field such as process.name, auditd.log.key, or winlog.event_data.ObjectName; test queries before enabling scheduled detection rules. Search and case behavior depend on field and configuration. Confirm event time and wait for ingestion and scheduled rules.</p>
+<p>Your quiz demonstrated CalculatorApp.exe for the Search-launched calculator, distinct from Lab 4&#x27;s launch method. In the simulated endpoint events, the created account was TestiKayttaja, added to Administrators; the registry value was Testi; /tmp/test.txt appeared on the SSH target; and the listed destinations included 10.1.0.150, .160, and .170. These are exercise artifacts. Explain why account creation, privileged group membership, Run-key changes, remote commands, and connections to several hosts can merit investigation; each still needs context.</p>
+<p>The lab&#x27;s correlation sequence uses two authentication failures followed by success and access to secret.txt. A production rule should also associate events with the appropriate user/host and time window so unrelated events are not incorrectly joined. SIEM aggregates and correlates; IDS/IPS examines traffic and may block; EDR focuses on endpoint detection and response; XDR correlates and responds across multiple domains.</p>
+</section>
+<section aria-labelledby="week-43-honeypots">
+<h2 id="week-43-honeypots">Week 43 Honeypots</h2>
+<p>A honeypot is a deliberately attractive decoy for detecting, diverting, or studying unauthorized activity. Because it should receive little legitimate traffic, a connection can be a useful signal, though scans and misconfiguration can create benign activity. Internal contact may indicate a compromised host, an insider, or accidental traffic; investigate before drawing conclusions.</p>
+<p>Low-interaction honeypots emulate limited services and offer lower risk and less detail. High-interaction systems expose more realistic functionality and yield richer behavior but require stronger isolation and monitoring. Cowrie emulates SSH/Telnet interactions and records attempted credentials, commands, and sessions; its level of interaction depends on configuration, so do not assume a real full operating system is always exposed. Honeyd, Dionaea, and T-Pot are other examples from the lecture.</p>
+<p>In Lab 6, Cowrie listens on DMZ TCP 2222, and playlog replays a captured terminal session. The lab customizes permitted test accounts and a fake banner, then forwards external TCP 52315 to the DMZ honeypot TCP 2222 with an appropriate WAN rule. Use segmentation, outbound restrictions, logging, and monitoring to limit misuse. A changed SSH host key can be legitimate after rebuilding a lab but can also signal interception: verify the fingerprint through a trusted channel before accepting it. Consider privacy, authorization, and data handling.</p>
+</section>
+<section aria-labelledby="week-44-traffic-monitoring">
+<h2 id="week-44-traffic-monitoring">Week 44 Traffic monitoring</h2>
+<p>Packet capture (PCAP) records observed packets; flow records such as NetFlow/IPFIX summarize communication by endpoints, ports, timing, and volume without necessarily retaining payload. Wireshark analyzes captures interactively; tcpdump captures at the command line; Zeek generates protocol and connection logs; Suricata and Snort inspect traffic and generate IDS/IPS alerts. Arkime indexes packet metadata and provides search over stored captures. Collection location, dropped packets, encryption, privacy, and storage all limit visibility.</p>
+<p>A capture filter excludes packets from the recorded capture; a Wireshark display filter hides or shows already captured packets without deleting them. Examples: <strong>ip.addr == 10.1.0.150</strong>, <strong>tcp.port == 80</strong>, and http.request.method == &quot;POST&quot;. Follow TCP or HTTP stream to reconstruct an exchange; export HTTP objects to inspect transferred files when permitted. HTTP form data may be visible as plaintext. Do not assume a capture is complete or that every observed IP is the original user.</p>
+<h3 id="tls-lab-reasoning">TLS lab reasoning</h3>
+<p>Your quiz identified TLS_RSA_WITH_AES_128_GCM_SHA256 in the supplied capture. In that exercise the supplied server RSA private key could decrypt the recorded session; after decryption the HTTP login and transferred picture were visible. With ephemeral Diffie-Hellman key exchange (for example ECDHE), the server private key alone generally cannot decrypt a recorded session; authorized session secrets such as a client key log may be necessary. RSA in a cipher suite name can refer to authentication rather than key exchange. Analyze only captures and keys you are authorized to access.</p>
+<p>The lecture&#x27;s Mirai example connects default IoT credentials to large-scale scanning and botnet traffic. SolarWinds illustrates suspicious beaconing or unusual outbound destinations from trusted software. Baselines, DNS, connection frequency, traffic volume, and destination context can help identify anomalies, but none alone proves compromise.</p>
+</section>
+<section aria-labelledby="week-46-proxies-and-web-application-firewalls">
+<h2 id="week-46-proxies-and-web-application-firewalls">Week 46 Proxies and web application firewalls</h2>
+<p>A forward proxy acts on behalf of clients accessing destinations, supporting outbound policy, logging, caching, and sometimes identity masking. A reverse proxy sits in front of servers, routing inbound requests and potentially providing load balancing, TLS termination, or WAF inspection. A transparent proxy redirects traffic without normal explicit client configuration. These are deployment roles; actual encryption and visibility depend on configuration.</p>
+<p>A VPN typically creates an encrypted tunnel for selected traffic, while a proxy often handles selected application traffic and does not inherently encrypt it. Split tunneling means a VPN need not carry all traffic. Neither automatically makes users anonymous. A malicious or misconfigured proxy can collect sensitive data or expose internal resources.</p>
+<p>TLS termination at a reverse proxy means the client-proxy connection is encrypted; the proxy-to-backend connection must be separately protected if needed. HTTPS inspection generally requires the client to trust the inspecting CA and raises privacy and trust issues. A WAF such as ModSecurity with OWASP Core Rule Set inspects HTTP requests and responses for patterns such as SQL injection or XSS. Its alerts and blocking rules require tuning, and a WAF does not fix unsafe application code: parameterized queries and proper input handling remain essential.</p>
+<p>In Lab 8, Squid logs and blocks test sites, while a reverse proxy and WAF inspect a deliberately vulnerable application. The completed quiz identifies REQUEST-942-APPLICATION-ATTACK-SQLI.conf in the ModSecurity logs. The lab tests detection versus blocking and illustrates false positives and incomplete coverage; adjusting anomaly thresholds can change both legitimate access and security outcomes.</p>
+</section>
+<section aria-labelledby="week-47-ids-and-ips">
+<h2 id="week-47-ids-and-ips">Week 47 IDS and IPS</h2>
+<p>An intrusion detection system (IDS) observes and alerts; an intrusion prevention system (IPS) can block or drop matching traffic when deployed in a suitable inline enforcement path. A network sensor sees traffic at its observation point; host-based sensors monitor an individual host. Placement affects what is visible. An alert or drop rule is useful only if the traffic traverses the sensor and the engine can inspect it.</p>
+<p>Signature detection matches known patterns and depends on current, appropriate rules. Anomaly detection looks for departures from a baseline and may surface novel behavior but can produce noisy alerts. Hybrid approaches combine signals. False positive means benign activity flagged; false negative means malicious activity missed. Encryption, evasion, performance limits, blind spots, stale signatures, and overly broad blocks all matter. Tune and validate rules before enforcing them.</p>
+<p>Lab 9 uses Suricata in OPNsense, enabled rule sets, alerts for scanning, ICMP and web traffic, and a custom HTTP rule that matches the text ?cmd=. The rule&#x27;s action, protocol, source/destination, direction, message, content, case modifier, classification, SID, and revision each serve a role. A text match is a heuristic, not proof of command injection; a different encoding or encrypted payload can evade visibility. The lab changes selected rules from alert to drop and tests both allowed and blocked traffic. An overly broad drop policy can also disrupt legitimate SSH. Check logs, sensor health, selected interface, rule application, and actual traffic before changing policy.</p>
+</section>
+<section aria-labelledby="lab-command-and-configuration-reference">
+<h2 id="lab-command-and-configuration-reference">Lab command and configuration reference</h2>
+<p>This section brings together the commands and settings visible in the lab handouts and quiz reviews. Commands use the course lab addresses as examples. Replace addresses, usernames, file paths, and group numbers with the values in the question. Windows commands are identified separately from Linux commands. Commands that install software, change firewall rules, start vulnerable containers, or expose services belong only in the authorized lab. Some configuration values in the handouts appeared only in screenshots; use the original screenshots for exact values not written here.</p>
+<h3 id="before-changing-a-lab">Before changing a lab</h3>
+<p>On OPNsense, use System &gt; Configuration &gt; Backups to download a configuration backup before each lab. Identify the LAN, DMZ, WAN, and SIEM interfaces by their addresses. Save and apply changes, then verify service status, the source and destination, and the logs. Do not assume the firewall, Linux host firewall, application service, DNS, and routing are the same control.</p>
+<h3 id="lab-1-firewall-dhcp-nat-and-ssh">Lab 1 Firewall DHCP NAT and SSH</h3>
+<p>The lab assigns LAN gateway 10.0.0.1/24, DMZ gateway 10.1.0.1/24, and SIEM gateway 10.2.0.1/24. In Services &gt; DHCPv4, the example pools are LAN 10.0.0.160–10.0.0.200 and DMZ 10.1.0.150–10.1.0.200; the lab DNS servers are 198.18.100.4 and 198.18.100.8. DHCP leases can differ from the example.</p>
+<ul>
+<li>Windows CMD: <strong>ipconfig /release</strong> releases the current DHCP configuration; <strong>ipconfig /renew</strong> requests a lease; <strong>ipconfig</strong> displays the resulting configuration.</li>
+</ul>
+<pre tabindex="0"><code>ipconfig /release</code></pre>
+<pre tabindex="0"><code>ipconfig /renew</code></pre>
+<pre tabindex="0"><code>ipconfig</code></pre>
+<ul>
+<li>Rocky Linux: <strong>nmtui</strong> opens NetworkManager&#x27;s text interface. Edit ens192, select automatic IPv4, remove manual addresses, then deactivate and reactivate the connection. <strong>ip addr</strong> displays interface addresses.</li>
+</ul>
+<pre tabindex="0"><code>nmtui</code></pre>
+<pre tabindex="0"><code>ip addr</code></pre>
+<ul>
+<li>In Firewall &gt; Aliases, the lab defines RFC1918 as 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16. A pass rule with inverted destination !RFC1918 permits matching destinations outside those ranges. Separate LAN-to-DMZ pass rules cover TCP 22, 80, 443, and 8080. Check actual rule ordering, interfaces, and default behavior.</li>
+<li>Linux: <strong>ping 8.8.8.8</strong> tests ICMP reachability; <strong>dnf update</strong> updates packages. ICMP success or failure does not establish whether HTTP or SSH works.</li>
+</ul>
+<pre tabindex="0"><code>ping 8.8.8.8</code></pre>
+<pre tabindex="0"><code>dnf update</code></pre>
+<ul>
+<li>Linux: <strong>systemctl status httpd</strong> checks Apache; <strong>systemctl start httpd</strong> starts it. <strong>curl localhost</strong> tests the local web service. From the client, <strong>curl http://10.1.0.150</strong> tests the DMZ web service over the network.</li>
+</ul>
+<pre tabindex="0"><code>systemctl status httpd</code></pre>
+<pre tabindex="0"><code>systemctl start httpd</code></pre>
+<pre tabindex="0"><code>curl localhost</code></pre>
+<pre tabindex="0"><code>curl http://10.1.0.150</code></pre>
+<ul>
+<li>OPNsense: Firewall &gt; NAT &gt; Port Forward; example WAN TCP destination WAN address port 80 redirects to DMZ server address port 80. Save and apply; check Firewall &gt; Log Files &gt; Live View and the corresponding WAN pass rule.</li>
+<li>SSH example: <strong>ssh user@server_ip -p 8080</strong> connects to TCP 8080. The server must listen there, the network and host firewall must permit it, and SELinux must permit the port.</li>
+</ul>
+<pre tabindex="0"><code>ssh user@server_ip -p 8080</code></pre>
+<ul>
+<li>On the DMZ Linux host, the lab edits /etc/ssh/sshd_config to contain Port 22 and Port 8080, then uses <strong>semanage port -a -t ssh_port_t -p tcp 8080</strong> and systemctl restart sshd. The -a option adds a port definition; an existing mapping needs separate inspection rather than blindly adding it.</li>
+</ul>
+<pre tabindex="0"><code>semanage port -a -t ssh_port_t -p tcp 8080</code></pre>
+<ul>
+<li><strong>firewall-cmd --permanent --add-port=8080/tcp</strong> adds the host firewall exception; <strong>systemctl restart firewalld</strong> applies it in the lab. <strong>firewall-cmd --reload</strong> is another standard way to load permanent configuration.</li>
+</ul>
+<pre tabindex="0"><code>firewall-cmd --permanent --add-port=8080/tcp</code></pre>
+<pre tabindex="0"><code>systemctl restart firewalld</code></pre>
+<pre tabindex="0"><code>firewall-cmd --reload</code></pre>
+<ul>
+<li>Your Lab 1 quiz asks for WAN TCP 52314 forwarded to DMZ TCP 22 with a WAN pass rule. The handout&#x27;s final wording differs; follow the task&#x27;s stated internal port and protocol.</li>
+</ul>
+<h3 id="lab-2-vulnerability-scanning-and-docker">Lab 2 Vulnerability scanning and Docker</h3>
+<p>First back up OPNsense, return the DMZ host&#x27;s sshd to port 22 only, restart sshd, and temporarily permit the authorized workstation to scan the DMZ target. The target containers are intentionally vulnerable and must be removed when finished.</p>
+<ul>
+<li>On DMZ Linux, Docker mapping syntax is docker run -d -p HOST_PORT:CONTAINER_PORT --name NAME IMAGE. The lab maps 8010:80 and 8022:22 for target1, and 8080:80 for target2. Thus 8010 reaches the target&#x27;s HTTP port 80 and 8022 reaches its SSH port 22.</li>
+<li>The full target1 command from the handout is shown below; it exposes numerous deliberately vulnerable services and is for the isolated exercise only:</li>
+</ul>
+<pre tabindex="0"><code>docker run -d -p 21:21 -p 23:23 -p 25:25 -p 53:53 -p 111:111 -p 139:139 \
+  -p 445:445 -p 512:512 -p 513:513 -p 514:514 -p 1099:1099 -p 1524:1524 -p \
+  2049:2049 -p 2121:2121 -p 3306:3306 -p 5432:5432 -p 5900:5900 -p \
+  6000:6000 -p 6667:6667 -p 8009:8009 -p 8010:80 -p 8022:22 -p 8180:8180 \
+  -p 55852:55852 --name target1 tleemcjr/metasploitable2 sh -c \
+  &quot;/bin/services.sh &amp;&amp; sleep infinity&quot;</code></pre>
+<ul>
+<li>The second target is started with docker run -d -p 8080:80 --name=target2 vulnerables/web-dvwa.</li>
+<li>From the Windows WSL environment: <strong>sudo apt-get update &amp;&amp; sudo apt-get upgrade</strong> refreshes and upgrades packages; <strong>apt-get install nmap -y</strong> and <strong>apt-get install nikto -y</strong> install the lab tools, with administrator privileges where required.</li>
+</ul>
+<pre tabindex="0"><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade</code></pre>
+<pre tabindex="0"><code>apt-get install nmap -y</code></pre>
+<pre tabindex="0"><code>apt-get install nikto -y</code></pre>
+<ul>
+<li><strong>curl http://10.1.0.150:8010</strong> checks HTTP reachability. <strong>nmap -sV -p 8080 10.1.0.150</strong> probes that port for service/version. <strong>sudo nmap -sV 10.1.0.150 -oN Deeper_port_scan_results.nmap</strong> records service detection in normal output format.</li>
+</ul>
+<pre tabindex="0"><code>curl http://10.1.0.150:8010</code></pre>
+<pre tabindex="0"><code>nmap -sV -p 8080 10.1.0.150</code></pre>
+<pre tabindex="0"><code>sudo nmap -sV 10.1.0.150 -oN Deeper_port_scan_results.nmap</code></pre>
+<ul>
+<li><strong>sudo nmap --script=vuln 10.1.0.150 -oN vuln_scan_results.nmap</strong> runs vulnerability-category scripts and saves output. <strong>nikto -h 10.1.0.150 -p 8010</strong> checks the HTTP service. A finding or banner is evidence to validate, not automatic proof of exploitation.</li>
+</ul>
+<pre tabindex="0"><code>sudo nmap --script=vuln 10.1.0.150 -oN vuln_scan_results.nmap</code></pre>
+<pre tabindex="0"><code>nikto -h 10.1.0.150 -p 8010</code></pre>
+<ul>
+<li>On the DMZ Docker host, <strong>docker exec target1 /etc/init.d/ssh start</strong> starts SSH inside target1. A client can then test <strong>ssh -p 8022 user@10.1.0.150</strong> if the target, mapping, and rules are working.</li>
+</ul>
+<pre tabindex="0"><code>docker exec target1 /etc/init.d/ssh start</code></pre>
+<pre tabindex="0"><code>ssh -p 8022 user@10.1.0.150</code></pre>
+<ul>
+<li><strong>docker rm -f target1</strong> and <strong>docker rm -f target2</strong> remove the test containers. Remove the temporary broad scan rule afterwards. If a target has crashed, verify its status and recreate it only in the authorized environment.</li>
+</ul>
+<pre tabindex="0"><code>docker rm -f target1</code></pre>
+<pre tabindex="0"><code>docker rm -f target2</code></pre>
+<h3 id="lab-3-pki-apache-and-mutual-tls">Lab 3 PKI Apache and mutual TLS</h3>
+<ul>
+<li>On DMZ Linux: <strong>sudo dnf install httpd mod_ssl openssl -y</strong> installs Apache, its TLS module, and OpenSSL.</li>
+</ul>
+<pre tabindex="0"><code>sudo dnf install httpd mod_ssl openssl -y</code></pre>
+<ul>
+<li>Self-signed test certificate: sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/pki/tls/private/selfsigned.key -out /etc/pki/tls/certs/selfsigned.crt. This creates a private key and self-signed certificate; -nodes leaves the key unencrypted, so protect file access. A self-signed server certificate is not automatically trusted.</li>
+<li>CSR and key: openssl req -new -newkey rsa:2048 -nodes -keyout dmz.lab.local.key -out dmz.lab.local.csr. Inspect with openssl req -in dmz.lab.local.csr -noout -text. The CSR is shared for signing; the private key stays protected on the server.</li>
+<li>In OPNsense System &gt; Trust &gt; Authorities, create the lab CA. Under System &gt; Trust &gt; Certificates, select Sign a Certificate Signing Request, paste the CSR, choose the CA, and configure the test DNS SAN www.groupX.com. The lab selects digitalSignature and keyEncipherment usages. Export the signed server certificate and the CA certificate.</li>
+<li>From Windows CMD, <strong>scp LabCA.crt root@10.1.0.150:/tmp</strong> copies the CA certificate to the server; use the analogous scp command for the signed certificate. Install the certificate, matching key, and CA file at their configured paths.</li>
+</ul>
+<pre tabindex="0"><code>scp LabCA.crt root@10.1.0.150:/tmp</code></pre>
+<ul>
+<li>Apache /etc/httpd/conf.d/ssl.conf: SSLCertificateFile points to the server certificate; SSLCertificateKeyFile points to its matching private key; SSLCACertificateFile points to the CA file used in the lab. <strong>sudo restorecon -Rv /etc/pki/tls</strong> restores SELinux labels; <strong>sudo systemctl restart httpd</strong> reloads Apache after configuration changes.</li>
+</ul>
+<pre tabindex="0"><code>sudo restorecon -Rv /etc/pki/tls</code></pre>
+<pre tabindex="0"><code>sudo systemctl restart httpd</code></pre>
+<ul>
+<li><strong>openssl verify -CAfile /etc/pki/tls/certs/LabCA.crt /etc/pki/tls/certs/dmz.lab.local.crt</strong> verifies a chain against the provided CA. Separately verify hostname, validity, purpose, and client trust.</li>
+</ul>
+<pre tabindex="0"><code>openssl verify -CAfile /etc/pki/tls/certs/LabCA.crt /etc/pki/tls/certs/dmz.lab.local.crt</code></pre>
+<ul>
+<li>The Windows hosts file C:\Windows\System32\drivers\etc\hosts maps 10.1.0.150 to www.groupX.com for the exercise. Trust the verified lab CA in the appropriate Firefox or Windows trust store; do not import an unknown CA.</li>
+<li>Apache <strong>SSLProtocol -all +TLSv1.2 +TLSv1.3</strong> restricts the lab&#x27;s protocol versions. <strong>SSLVerifyClient require</strong> requires a client certificate. Create a client certificate in OPNsense, export its protected certificate/key bundle as .p12, import it into the client, and restart Apache. Without an appropriate client certificate the quiz&#x27;s Firefox error was SSL_ERROR_RX_CERTIFICATE_REQUIRED_ALERT.</li>
+</ul>
+<pre tabindex="0"><code>SSLProtocol -all +TLSv1.2 +TLSv1.3</code></pre>
+<pre tabindex="0"><code>SSLVerifyClient require</code></pre>
+<h3 id="lab-4-windows-and-linux-audit-logs">Lab 4 Windows and Linux audit logs</h3>
+<ul>
+<li>Windows Local Security Policy &gt; Advanced Audit Policy Configuration &gt; Detailed Tracking &gt; Audit Process Creation: enable success and failure in the exercise. Run calc.exe from CMD and inspect Windows Event Viewer &gt; Security for event 4688 and its parent process.</li>
+<li>Enable Object Access &gt; Audit File System success auditing and configure the file&#x27;s Security &gt; Advanced &gt; Auditing entry for relevant users and access rights. Modify C:\LabFiles\secret.txt and inspect Security event 4663. Both audit policy and object auditing are needed.</li>
+<li>Linux log paths in the handout: /var/log/httpd/access_log, /var/log/httpd/error_log, /var/log/messages, and /var/log/audit/audit.log. <strong>journalctl -u sshd</strong> displays the SSH service journal.</li>
+</ul>
+<pre tabindex="0"><code>journalctl -u sshd</code></pre>
+<ul>
+<li><strong>sudo auditctl -w /usr/bin/bc -p x -k calc-launch</strong> creates a watch for execution. Run bc and exit with Ctrl+D; <strong>sudo ausearch -k calc-launch</strong> searches the tagged events. <strong>sudo auditctl -l</strong> lists audit rules.</li>
+</ul>
+<pre tabindex="0"><code>sudo auditctl -w /usr/bin/bc -p x -k calc-launch</code></pre>
+<pre tabindex="0"><code>sudo ausearch -k calc-launch</code></pre>
+<pre tabindex="0"><code>sudo auditctl -l</code></pre>
+<ul>
+<li><strong>sudo auditctl -w /home/user/secret.txt -p rwxa -k file-access</strong> watches read, write, execute, and attribute changes in the exercise. <strong>touch /home/user/secret.txt</strong> creates a file; <strong>echo &quot;test&quot; &gt;&gt; /home/user/secret.txt</strong> appends text; <strong>sudo ausearch -k file-access</strong> retrieves matching audit entries. Interpret the syscall and process fields for that machine rather than assuming a fixed number.</li>
+</ul>
+<pre tabindex="0"><code>sudo auditctl -w /home/user/secret.txt -p rwxa -k file-access</code></pre>
+<pre tabindex="0"><code>touch /home/user/secret.txt</code></pre>
+<pre tabindex="0"><code>echo &quot;test&quot; &gt;&gt; /home/user/secret.txt</code></pre>
+<pre tabindex="0"><code>sudo ausearch -k file-access</code></pre>
+<ul>
+<li>For the proof sequence, enable logon/logoff auditing, sign out and in, modify the Windows file, launch PuTTY, connect over SSH, run <strong>docker ps -a</strong> on Linux, and modify the Linux file. Correlate user, process, timestamps, and host logs. <strong>docker ps -a</strong> lists containers, including stopped ones.</li>
+</ul>
+<pre tabindex="0"><code>docker ps -a</code></pre>
+<h3 id="lab-5-elastic-siem">Lab 5 Elastic SIEM</h3>
+<ul>
+<li>In OPNsense create LAN-to-SIEM and DMZ-to-SIEM rules. The example Kibana address is 10.2.0.11:5601 and Fleet Server uses https://10.2.0.11:8220. Confirm the actual lab deployment&#x27;s protocol and certificate settings.</li>
+<li>On Windows CMD, the handout copies the CA with <strong>scp root@10.2.0.11:/etc/elasticsearch/certs/elasticsearch-ca.pem .</strong> and imports it with certutil -addstore -f &quot;Root&quot; elasticsearch-ca.pem. Verify the CA through a trusted channel before trusting it.</li>
+</ul>
+<pre tabindex="0"><code>scp root@10.2.0.11:/etc/elasticsearch/certs/elasticsearch-ca.pem .</code></pre>
+<ul>
+<li>On Rocky Linux, copy the CA to /etc/pki/ca-trust/source/anchors/ and run update-ca-trust. Enroll agents under the appropriate Windows or Linux Fleet policy, and wait until enrollment completes. The lab uses --insecure during setup; this weakens verification and is a lab-specific workaround, not a recommended production default.</li>
+<li>OPNsense System &gt; Settings &gt; Logging / targets: the lab uses TCP destination 10.2.0.11 port 9001, then adds the pfSense integration in Elastic. On SIEM Linux, <strong>firewall-cmd --zone=public --permanent --add-port 9001/tcp</strong> followed by <strong>firewall-cmd --reload</strong> permits the listener. Apply settings and check that events arrive.</li>
+</ul>
+<pre tabindex="0"><code>firewall-cmd --zone=public --permanent --add-port 9001/tcp</code></pre>
+<pre tabindex="0"><code>firewall-cmd --reload</code></pre>
+<ul>
+<li>Add relevant Windows and Auditd Logs integrations to agent policies. In Discover, examples include <strong>process.name: calc*</strong>, <strong>auditd.log.key: file-access*</strong>, <strong>auditd.log.name: secret.txt</strong>, and winlog.event_data.ObjectName for the Windows file. Field names, case behavior, and index time ranges matter.</li>
+</ul>
+<pre tabindex="0"><code>process.name: calc*</code></pre>
+<pre tabindex="0"><code>auditd.log.key: file-access*</code></pre>
+<pre tabindex="0"><code>auditd.log.name: secret.txt</code></pre>
+<ul>
+<li>Create and enable rules for the Windows file, Linux file, calculator processes, Docker command activity, and port scans; test queries in Discover or rule preview. The lab uses a sequence of two authentication failures, a success, and access to secret.txt. A well-scoped rule should join by relevant user/host and time window.</li>
+<li>The supplied simulation produces the quiz&#x27;s example account, group, Run-key value, SSH file, and network destination observations. Do not run supplied simulation executables outside the explicitly authorized VLE.</li>
+</ul>
+<h3 id="lab-6-cowrie-honeypot">Lab 6 Cowrie honeypot</h3>
+<ul>
+<li>On DMZ Rocky Linux: <strong>dnf install -y epel-release</strong> and <strong>dnf install -y python3.11 python3.11-devel</strong> install prerequisites. The handout opens TCP 2222 and 2223 in the host firewall using <strong>firewall-cmd --add-port=2222/tcp --permanent</strong>, the analogous command for 2223, then firewall-cmd --reload.</li>
+</ul>
+<pre tabindex="0"><code>dnf install -y epel-release</code></pre>
+<pre tabindex="0"><code>dnf install -y python3.11 python3.11-devel</code></pre>
+<pre tabindex="0"><code>firewall-cmd --add-port=2222/tcp --permanent</code></pre>
+<ul>
+<li>Create a service account and workspace: <strong>sudo useradd -r -s /sbin/nologin cowrie</strong>; <strong>sudo mkdir /home/cowrie/</strong>; clone Cowrie in the lab and use chown -R cowrie:cowrie /home/cowrie/cowrie-git. The account and environment should be isolated.</li>
+</ul>
+<pre tabindex="0"><code>sudo useradd -r -s /sbin/nologin cowrie</code></pre>
+<pre tabindex="0"><code>sudo mkdir /home/cowrie/</code></pre>
+<ul>
+<li>As the Cowrie user: <strong>cd /home/cowrie/cowrie-git</strong>; <strong>python3.11 -m venv cowrie-env</strong>; <strong>source cowrie-env/bin/activate</strong>; <strong>pip install -r requirements.txt</strong>; <strong>pip install -r requirements-output.txt</strong>; <strong>python -m pip install -e .</strong>; cowrie start. The handout also upgrades pip. <strong>cowrie restart</strong> applies configuration changes.</li>
+</ul>
+<pre tabindex="0"><code>cd /home/cowrie/cowrie-git</code></pre>
+<pre tabindex="0"><code>python3.11 -m venv cowrie-env</code></pre>
+<pre tabindex="0"><code>source cowrie-env/bin/activate</code></pre>
+<pre tabindex="0"><code>pip install -r requirements.txt</code></pre>
+<pre tabindex="0"><code>pip install -r requirements-output.txt</code></pre>
+<pre tabindex="0"><code>python -m pip install -e .</code></pre>
+<pre tabindex="0"><code>cowrie restart</code></pre>
+<ul>
+<li>Permit the authorized LAN client to reach DMZ TCP 2222. Connect with <strong>ssh username@10.1.0.150 -p 2222</strong>; the simulated shell can record commands such as touch and wget. Examine /home/cowrie/cowrie-git/var/log/cowrie and recorded TTY sessions under var/lib/cowrie/tty. The lab runs playlog with the recorded session filename to replay it.</li>
+</ul>
+<pre tabindex="0"><code>ssh username@10.1.0.150 -p 2222</code></pre>
+<ul>
+<li>Customize the lab&#x27;s userdb.txt and fake banner in the Cowrie project, not the real system&#x27;s /etc. The handout creates my_honeyfs/etc/issue.net and sets contents_path = my_honeyfs in etc/cowrie.cfg before restarting.</li>
+<li>The quiz maps WAN TCP 52315 to DMZ TCP 2222 with a WAN allow rule. Verify exposure and containment. If an SSH host key changes after rebuild, verify the new fingerprint before using <strong>ssh-keygen -R [10.1.0.150]:2222</strong> to remove an obsolete known_hosts entry.</li>
+</ul>
+<pre tabindex="0"><code>ssh-keygen -R [10.1.0.150]:2222</code></pre>
+<h3 id="lab-7-wireshark-and-tls-capture">Lab 7 Wireshark and TLS capture</h3>
+<ul>
+<li>Open the supplied exercise .pcapng in Wireshark. Use display filters such as http, <strong>tcp.port == 80</strong>, <strong>ip.addr == 10.1.0.150</strong>, or <strong>http.request.method == &quot;POST&quot;</strong> to narrow the display. Right-click a relevant packet &gt; Follow &gt; TCP Stream or HTTP Stream to reconstruct a conversation.</li>
+</ul>
+<pre tabindex="0"><code>tcp.port == 80</code></pre>
+<pre tabindex="0"><code>ip.addr == 10.1.0.150</code></pre>
+<pre tabindex="0"><code>http.request.method == &quot;POST&quot;</code></pre>
+<ul>
+<li>For HTTP objects use File &gt; Export Objects &gt; HTTP where supported, or inspect the relevant stream. The exercise looks for form fields nimi and salasana and transferred images. Plain HTTP exposes content visible to the observer.</li>
+<li>Find the negotiated cipher in the TLS handshake. The lab capture uses TLS_RSA_WITH_AES_128_GCM_SHA256 and a supplied RSA server key. In Wireshark Preferences &gt; Protocols &gt; TLS, configure the supplied RSA key as directed, then inspect the decrypted stream. This technique depends on compatible key exchange and complete capture; it does not generally work with ECDHE using only the server private key.</li>
+<li>A capture filter restricts saved packets; a display filter only narrows what is shown. Avoid confusing the two or assuming absent traffic was never sent.</li>
+</ul>
+<h3 id="lab-8-squid-reverse-proxy-and-modsecurity">Lab 8 Squid reverse proxy and ModSecurity</h3>
+<ul>
+<li>OPNsense System &gt; Firmware &gt; Plugins: the handout installs os-squid. Configure and apply the proxy settings shown in the lab, create the indicated HTTP and HTTPS redirection rules, and inspect Services &gt; Web Proxy &gt; Access log. Exact screenshot-only values should be checked against the handout.</li>
+<li>Test access to the lab&#x27;s plain HTTP sites and then its blocked-site configuration. HTTPS interception depends on proper client trust in the lab CA and correct proxy configuration; consider privacy and authorized scope.</li>
+<li>On DMZ Linux, <strong>systemctl stop httpd</strong> stops the existing Apache service before the container exercise; <strong>sudo dnf install docker-compose-plugin</strong> installs Compose. Transfer the provided lab archive using scp, then <strong>unzip lab8.zip</strong>; <strong>cd lab8</strong>; docker compose up -d. The handout runs <strong>chmod +x script.sh</strong> and <strong>sudo ./script.sh</strong> in the authorized lab.</li>
+</ul>
+<pre tabindex="0"><code>systemctl stop httpd</code></pre>
+<pre tabindex="0"><code>sudo dnf install docker-compose-plugin</code></pre>
+<pre tabindex="0"><code>unzip lab8.zip</code></pre>
+<pre tabindex="0"><code>cd lab8</code></pre>
+<pre tabindex="0"><code>chmod +x script.sh</code></pre>
+<pre tabindex="0"><code>sudo ./script.sh</code></pre>
+<ul>
+<li><strong>docker logs modsecurity</strong> displays WAF logs. The completed quiz identifies REQUEST-942-APPLICATION-ATTACK-SQLI.conf. The lab changes BLOCKING_PARANOIA in docker-compose.yml to 4 and runs <strong>docker compose up -d</strong> to apply the change; test both legitimate and malicious test requests and inspect alerts.</li>
+</ul>
+<pre tabindex="0"><code>docker logs modsecurity</code></pre>
+<pre tabindex="0"><code>docker compose up -d</code></pre>
+<ul>
+<li>For reverse-proxy HTTPS, the lab mounts the certificate and matching private key into the container and sets the certificate paths as directed by that image. Private keys need restrictive permissions; do not copy the handout&#x27;s broad example permissions into production. Tune outbound anomaly score threshold only after evaluating false positives and security impact. A WAF does not repair vulnerable application code.</li>
+</ul>
+<h3 id="lab-9-suricata-ids-and-ips">Lab 9 Suricata IDS and IPS</h3>
+<ul>
+<li>In OPNsense Services &gt; Intrusion Detection &gt; Administration, configure the lab interface and mode, download/update and enable the specified ET Open rule sets, then create and apply a policy. The handout uses compromised, dshield, emerging-icmp, emerging-icmp_info, emerging-policy, emerging-scan, emerging-sql, and emerging-web_server sets.</li>
+<li>From the authorized WSL client, <strong>nmap -sS 10.1.0.150</strong> generates the lab scan; <strong>ping 10.1.0.150</strong> generates ICMP traffic. The handout also tests a harmless XSS-shaped request and web login against the lab application. Review Services &gt; Intrusion Detection &gt; Administration &gt; Alerts.</li>
+</ul>
+<pre tabindex="0"><code>nmap -sS 10.1.0.150</code></pre>
+<pre tabindex="0"><code>ping 10.1.0.150</code></pre>
+<ul>
+<li>The example custom signature is: alert http any any -&gt; any any (msg:&quot;Command Injection Attempt&quot;; content:&quot;?cmd=&quot;; nocase; classtype:custom-rule; sid:1000001; rev:1;). The action is alert, http is the protocol, any values cover source/destination addresses and ports, -&gt; indicates direction, content is the matched text, nocase makes that match case-insensitive, and sid/rev identify the signature and revision.</li>
+<li>The handout places its custom rule in /usr/local/etc/suricata/rules/custom.rules and creates an OPNsense policy for the custom classification. Save, apply, restart if necessary, generate test traffic, and inspect the alert. A simple ?cmd= match is a heuristic and can miss variants.</li>
+<li>Change the relevant rule or policy from alert to drop only when IPS is configured to enforce traffic inline. Apply and test with a fresh browser session. Review logs and sensor health; overly broad drops can block legitimate SSH and other traffic.</li>
+<li>The second example matches .exe in HTTP content with sid 1000002. The lab tests a permitted sample download and checks whether it completes and which rule fired. Visibility can be limited by TLS and rule scope.</li>
+</ul>
+</section>
+<section aria-labelledby="troubleshooting-commands-and-recovery">
+<h2 id="troubleshooting-commands-and-recovery">Troubleshooting commands and recovery</h2>
+<p>Use this as a diagnostic workflow, not as a list of commands to run blindly. The examples use the course lab environment. Replace hostnames, ports, interfaces, paths, and usernames with the values in your exam. Run scans and configuration changes only on authorized systems. A dollar sign is not part of any command here. Read the error and record it before changing anything.</p>
+<h3 id="first-identify-what-failed">First identify what failed</h3>
+<p>1. Read the exact error. Note the command, machine, user, time, target address, port, and whether the problem is local or remote. Repeat only a harmless diagnostic if needed.</p>
+<p>2. Check spelling, quotation marks, hyphens, spaces, paths, case, and whether you are in Windows CMD, PowerShell, WSL, Rocky Linux, OPNsense, or a container. Linux filenames and commands are case-sensitive. Replace typographic dashes with ordinary hyphens.</p>
+<p>3. Test one layer at a time: local command and file, local service, address and route, network and host firewall, application protocol, then authentication or certificate. Check logs at the same time.</p>
+<p>4. Make one justified change, test again, and document the result. Back up configuration before changing it. Use sudo only where required; it does not fix incorrect paths or syntax.</p>
+<h3 id="general-shell-and-file-problems">General shell and file problems</h3>
+<p>Where am I, which user am I, and what files are here?</p>
+<pre tabindex="0"><code>pwd
+whoami
+id
+ls -la</code></pre>
+<p>pwd prints the current directory; id shows user and group IDs; ls -la includes hidden entries and permissions. If a relative file path fails, use the correct working directory or an absolute path. Check the file without changing it:</p>
+<pre tabindex="0"><code>ls -l /path/to/file
+file /path/to/file
+stat /path/to/file
+head -n 30 /path/to/file
+tail -n 50 /path/to/file</code></pre>
+<p>If the output is long, pipe a text log to less, or search for a term. Press q to leave less. grep -i ignores case and -n shows line numbers.</p>
+<pre tabindex="0"><code>less /path/to/log
+grep -in &#x27;error&#x27; /path/to/log
+tail -f /path/to/log</code></pre>
+<p>Ctrl+C stops tail -f. A permission denied error may mean the file or a parent directory is inaccessible, the command needs an authorized administrator, or SELinux denies access. Inspect ownership and permissions first; do not use chmod 777 or change ownership of a private key as a general fix.</p>
+<pre tabindex="0"><code>ls -ld /path/to /path/to/file
+sudo -l</code></pre>
+<p>Command not found: check whether the executable is installed and on PATH. A missing file, an inactive virtual environment, and a typo require different fixes.</p>
+<pre tabindex="0"><code>command -v nmap
+type -a python3
+echo &quot;$PATH&quot;
+python3 --version</code></pre>
+<p>Use man command or command --help for syntax; q exits man. Some programs use a different help flag. If a script exists but cannot run, check its interpreter and permissions. Run only trusted lab scripts.</p>
+<pre tabindex="0"><code>man ssh
+ssh -h
+head -n 1 script.sh
+ls -l script.sh</code></pre>
+<h3 id="package-installation-and-disk-space">Package installation and disk space</h3>
+<p>First identify the machine and package manager: Rocky uses dnf; Ubuntu/WSL uses apt; OPNsense uses FreeBSD tools. A package that exists on one may have a different name or repository on another. Check network and DNS if repositories cannot be reached. The lab&#x27;s update and install steps require administrative access.</p>
+<pre tabindex="0"><code>cat /etc/os-release
+df -h
+df -i
+dnf --version
+apt --version</code></pre>
+<p>df -h reports filesystem capacity; df -i checks inode exhaustion. A full disk can prevent logs, installs, or container writes. Identify the relevant directory before deleting anything. On Rocky, inspect an installed package and repository availability:</p>
+<pre tabindex="0"><code>rpm -q httpd
+dnf repolist
+dnf info httpd</code></pre>
+<p>On Ubuntu/WSL, check package status and refresh the index if appropriate:</p>
+<pre tabindex="0"><code>dpkg -s nmap
+apt-cache policy nmap
+sudo apt-get update</code></pre>
+<p>Read the repository error before retrying. Confirm address, gateway, DNS, reachability, system time, repository configuration, and proxy settings. Do not disable certificate checks as a routine fix.</p>
+<h3 id="network-address-routing-dns-and-port-checks">Network address routing DNS and port checks</h3>
+<p>On the Linux host, identify interface name, assigned address, and default route:</p>
+<pre tabindex="0"><code>ip -br addr
+ip route
+ip route get 10.1.0.150</code></pre>
+<p>On Windows CMD, inspect IP, gateway and DNS information:</p>
+<pre tabindex="0"><code>ipconfig /all
+route print</code></pre>
+<p>If DHCP did not supply the expected address, verify the correct interface, DHCP scope, gateway, address conflicts, and connection state. In the lab, renew using <strong>ipconfig /release</strong> followed by <strong>ipconfig /renew</strong> on the Windows client, or inspect the Linux profile using nmtui. Releasing an address interrupts that connection. DHCP values may differ on another attempt.</p>
+<p>Distinguish a DNS failure from an IP connectivity failure. A successful ping tests ICMP reachability, not whether TCP or the application is available. An ICMP failure does not prove that TCP is blocked.</p>
+<pre tabindex="0"><code>ping -c 4 10.1.0.150
+getent hosts www.groupX.com
+cat /etc/resolv.conf</code></pre>
+<p>Windows alternatives:</p>
+<pre tabindex="0"><code>ping 10.1.0.150
+nslookup www.groupX.com</code></pre>
+<p>Check the hosts file when the lab uses a custom DNS name. On Windows it is C:\Windows\System32\drivers\etc\hosts; on Linux it is /etc/hosts. Test the name that matches the certificate, not only the IP address.</p>
+<p>Check whether the server is listening locally and whether a client can reach the intended TCP port. On the Linux server:</p>
+<pre tabindex="0"><code>sudo ss -lntup
+sudo ss -lntp | grep &#x27;:80&#x27;
+sudo ss -lntp | grep &#x27;:22&#x27;</code></pre>
+<p>Look at the listening address, port, and process. A service bound only to 127.0.0.1 is not generally reachable remotely. UDP will not appear in the TCP-only command. From Windows PowerShell, test TCP without assuming ping is enabled:</p>
+<pre tabindex="0"><code>Test-NetConnection 10.1.0.150 -Port 80
+Test-NetConnection 10.1.0.150 -Port 22</code></pre>
+<p>Interpret the result: connection refused often means the host was reached but no listener accepted the connection, although a firewall may actively reject; a timeout can indicate a dropped packet, routing problem, unavailable host, or return-path issue. Check both ends and logs. For an authorized lab host, a focused service probe can add evidence:</p>
+<pre tabindex="0"><code>nmap -sV -p 22,80,443,8080 10.1.0.150</code></pre>
+<h3 id="firewall-nat-and-service-troubleshooting">Firewall NAT and service troubleshooting</h3>
+<p>Check OPNsense Live View for interface, action, source and destination, protocol, port, and matching rule while generating a single test. Verify rules on the interface where traffic enters, relevant ordering and defaults, the WAN destination and port-forward mapping, the pass rule, and the return path. Existing state or browser caching can affect a retest; use a new test connection and inspect the logs. Do not infer ping from a TCP rule.</p>
+<p>On Rocky Linux inspect the host firewall. The active zone may not be public; substitute the actual zone.</p>
+<pre tabindex="0"><code>sudo firewall-cmd --state
+sudo firewall-cmd --get-active-zones
+sudo firewall-cmd --list-all
+sudo firewall-cmd --zone=public --list-all</code></pre>
+<p>Compare runtime and permanent rules when relevant. If a missing port is confirmed and the task authorizes the change, add the lab-specific rule, reload, and check again:</p>
+<pre tabindex="0"><code>sudo firewall-cmd --permanent --add-port=8080/tcp
+sudo firewall-cmd --reload
+sudo firewall-cmd --list-ports</code></pre>
+<p>To check SELinux without switching it off:</p>
+<pre tabindex="0"><code>getenforce
+sudo ausearch -m AVC -ts recent
+ls -Z /etc/pki/tls/certs</code></pre>
+<p>Look for a denial at the time of the test and identify the affected path or port. The Lab 1 SSH example uses <strong>semanage port -a -t ssh_port_t -p tcp 8080</strong>, but first inspect existing port labels: semanage port -l | grep ssh_port_t. If an existing port is assigned a different label, investigate before modifying it. The lab uses <strong>sudo restorecon -Rv /etc/pki/tls</strong> to restore expected certificate file labels. Keep SELinux enforcing while diagnosing.</p>
+<h3 id="systemd-apache-http-and-web-problems">systemd Apache HTTP and web problems</h3>
+<p>If a service fails or behaves unexpectedly, check its status and recent logs before restarting:</p>
+<pre tabindex="0"><code>sudo systemctl status httpd --no-pager
+sudo journalctl -u httpd -n 100 --no-pager
+sudo journalctl -u httpd -f</code></pre>
+<p>On Rocky, validate the Apache configuration before a restart:</p>
+<pre tabindex="0"><code>sudo apachectl configtest
+sudo ss -lntp | grep &#x27;:443&#x27;
+curl -v http://127.0.0.1/
+curl -v http://10.1.0.150/</code></pre>
+<p>If configtest fails, fix the named file and line, then retest. If localhost succeeds but the remote client fails, compare binding address, routing, OPNsense rules, and firewalld. If both fail, focus on the service, configuration, listener, and logs. The access log and error log help distinguish request handling from server errors:</p>
+<pre tabindex="0"><code>sudo tail -n 50 /var/log/httpd/access_log
+sudo tail -n 50 /var/log/httpd/error_log</code></pre>
+<p>HTTP 404 means the requested resource was not found; 403 means forbidden. Inspect the exact URL, virtual host, document root, permissions, and logs. Browser cache can obscure retesting; try a private window. A 5xx response means the server or upstream failed; inspect the relevant service and proxy logs.</p>
+<h3 id="ssh-connection-and-key-failures">SSH connection and key failures</h3>
+<p>Verbose SSH output shows where negotiation fails. Substitute the user, host and port in the lab:</p>
+<pre tabindex="0"><code>ssh -v -p 22 user@10.1.0.150
+sudo systemctl status sshd --no-pager
+sudo journalctl -u sshd -n 100 --no-pager
+sudo sshd -t
+sudo ss -lntp | grep sshd</code></pre>
+<p>sshd -t checks server configuration syntax; a clean result does not prove access through the network. If port 8080 is expected, verify the Port line, service listener, network firewall, host firewall, and SELinux port label. Authentication failures require the correct user, credentials or key, and server policy. A host-key mismatch might indicate a rebuilt lab or an interception attempt: verify the new fingerprint independently. Only after verification, remove the specific obsolete entry:</p>
+<pre tabindex="0"><code>ssh-keygen -F &#x27;[10.1.0.150]:2222&#x27;
+ssh-keygen -R &#x27;[10.1.0.150]:2222&#x27;</code></pre>
+<h3 id="tls-certificates-and-mtls">TLS certificates and mTLS</h3>
+<p>Check the name, chain, expiry, intended usage, private key, trust store, and system clock. On the Linux machine:</p>
+<pre tabindex="0"><code>date -u
+openssl x509 -in server.crt -noout -subject -issuer -dates -ext subjectAltName
+openssl x509 -in server.crt -noout -text
+openssl req -in server.csr -noout -text
+openssl verify -CAfile LabCA.crt server.crt</code></pre>
+<p>Check the server&#x27;s presented chain and a name-based HTTPS response. Replace www.groupX.com with the certificate&#x27;s actual DNS name. The -CAfile option supplies the lab CA for validation; it does not install it globally.</p>
+<pre tabindex="0"><code>openssl s_client -connect www.groupX.com:443 -servername www.groupX.com -showcerts -CAfile LabCA.crt
+curl -v --cacert LabCA.crt https://www.groupX.com/</code></pre>
+<p>A self-signed or unknown issuer warning calls for verification and a trusted CA, not automatic bypass. Name mismatch calls for the correct DNS name and matching SAN. An expired or not-yet-valid certificate may require a correct clock or replacement certificate. A chain verification success does not by itself prove a hostname or EKU is correct. If mTLS fails, inspect whether the server requires a client certificate, whether the client has the certificate and matching private key, whether the issuing CA is trusted by the server, and whether client-auth usage and validity are appropriate. Review Apache logs. Do not share private keys.</p>
+<h3 id="docker-and-compose">Docker and Compose</h3>
+<p>Check which host you are on; docker commands for the lab targets run on the DMZ Docker host, not automatically inside WSL or a container. Inspect state, logs, published ports and configuration:</p>
+<pre tabindex="0"><code>docker ps -a
+docker logs --tail 100 target1
+docker inspect target1
+docker port target1
+docker compose ps
+docker compose logs --tail 100
+docker compose config</code></pre>
+<p>If the container is stopped, read its logs and exit state before recreating it. If a published port is unreachable, check host mapping, process inside the container, host listener, firewall and route. If docker exec fails, ensure the named container is running and the command exists in that image:</p>
+<pre tabindex="0"><code>docker exec target1 /etc/init.d/ssh status
+docker exec target1 /etc/init.d/ssh start</code></pre>
+<p>For a port conflict, identify the listener with sudo ss -lntp and inspect which application owns it. Stop or change a service only when the lab instructions authorize it. docker compose config checks and displays resolved configuration; review errors and secret handling before sharing its output. Avoid deleting volumes to troubleshoot; they may contain data.</p>
+<h3 id="nmap-nikto-and-scan-results">Nmap Nikto and scan results</h3>
+<p>Confirm authorization, target IP, listening service and firewall path. An open port can host a service on a nonstandard number; -sV probes the service but is not infallible. Compare the mapping and a direct protocol test:</p>
+<pre tabindex="0"><code>nmap -sV -p 8010,8022 10.1.0.150
+curl -v http://10.1.0.150:8010/
+nikto -h 10.1.0.150 -p 8010</code></pre>
+<p>If the scan shows filtered, inspect firewall and reachability; if closed, check the listener and container state. If the results look wrong, confirm the correct IP and target availability, and compare service banners and vendor information. Scanners can produce false positives and false negatives. Restore the lab&#x27;s temporary scan rule after testing.</p>
+<h3 id="audit-logs-and-elastic-siem">Audit logs and Elastic SIEM</h3>
+<p>If an expected audit event is missing, check audit service, rule, exact path, user action, log permissions, and time range. File watches on paths may behave differently if the file is replaced; verify the rule and event against the lab setup.</p>
+<pre tabindex="0"><code>sudo systemctl status auditd --no-pager
+sudo auditctl -l
+sudo ausearch -k calc-launch -i
+sudo ausearch -k file-access -i
+sudo tail -n 50 /var/log/audit/audit.log</code></pre>
+<p>For Windows, confirm process creation or file-system audit policy, the file&#x27;s auditing entry, and Event Viewer Security log; event 4688 is process creation and 4663 is object access when auditing is configured. Search by time and relevant process or path, not event ID alone.</p>
+<p>For Elastic, verify the agent is healthy and enrolled under the intended policy, source integration is enabled, host-to-SIEM network rules and trust are correct, and events are present before testing the detection rule. Inspect the local agent service where it is installed:</p>
+<pre tabindex="0"><code>sudo systemctl status elastic-agent --no-pager
+sudo journalctl -u elastic-agent -n 100 --no-pager</code></pre>
+<p>In Discover, widen the time range, remove stale filters, check the correct data view, and search for the exact fields or a broad term before refining. Examples in the lab include <strong>process.name: calc*</strong> and auditd.log.key: file-access*. Allow for ingestion delay and the rule schedule, then preview the query and verify the rule is enabled. If events exist but alerts do not, compare index selection, query, time window, schedule and permissions. A missing event is not proof that activity did not occur.</p>
+<h3 id="cowrie-honeypot">Cowrie honeypot</h3>
+<p>Activate the right Python environment on the host and check whether Cowrie is running, its listener is present, and log files contain the attempted connection:</p>
+<pre tabindex="0"><code>cd /home/cowrie/cowrie-git
+source cowrie-env/bin/activate
+cowrie status
+sudo ss -lntp | grep &#x27;:2222&#x27;
+ls -la var/log/cowrie
+tail -n 50 var/log/cowrie/cowrie.log</code></pre>
+<p>If the command is missing, check the active virtual environment and installation. If the listener is absent, inspect the Cowrie log and configuration, port conflict, and service account permissions. If local access works but remote access fails, inspect OPNsense and firewalld rules. Check the actual configured log path and filename if the example file is absent. Project etc paths are distinct from the host&#x27;s /etc. Only restart after identifying and correcting the problem.</p>
+<h3 id="wireshark-and-tls-capture">Wireshark and TLS capture</h3>
+<p>If no packets appear, verify the correct capture interface, capture filter, permissions, and whether the traffic actually crosses that interface. A display filter can hide all captured packets: clear it and inspect again. Check time range, endpoints, and TCP stream; packet loss or a short capture may prevent reconstruction.</p>
+<p>If TLS decryption fails, verify the negotiated cipher suite, the correct capture and matching key or authorized session key log, and whether the handshake was captured. The RSA server private key from the exercise works only for compatible RSA key exchange. An ECDHE session generally needs its session secrets; the server&#x27;s long-term private key alone is insufficient. Do not assume missing plaintext means there was no application traffic.</p>
+<h3 id="squid-reverse-proxy-and-suricata">Squid reverse proxy and Suricata</h3>
+<p>For Squid, verify client/proxy settings, OPNsense rules and redirects, proxy service health, access logs, destination DNS, and the test site&#x27;s protocol. A blocked site should produce a relevant log entry; if HTTPS inspection is used, check trusted CA and certificate name. If a reverse proxy fails, inspect its container logs and configuration, backend listener, backend address/port and network path. An HTTP 502 or 504 is a reason to inspect the upstream, not proof of one specific failure.</p>
+<pre tabindex="0"><code>docker compose ps
+docker logs --tail 100 modsecurity
+docker compose logs --tail 100
+curl -v http://www.groupX.com/</code></pre>
+<p>For Suricata, verify service health, the monitored interface, enabled rule set, direction, action, inline IPS mode, and that the traffic traverses the sensor. Inspect OPNsense Intrusion Detection &gt; Alerts while generating one controlled request. An alert action detects but does not itself drop; a drop policy also requires working inline enforcement. If no alert appears, check rule match conditions, encryption, policy application, and traffic visibility. If legitimate traffic is blocked, identify the exact signature and tune the policy; do not disable all security controls. Keep evidence of the alert, test, and applied change.</p>
+<h3 id="exam-troubleshooting-answer-template">Exam troubleshooting answer template</h3>
+<p>State: (1) symptom and environment; (2) one diagnostic command or GUI log and expected output; (3) likely causes supported by the result; (4) the smallest authorized correction; and (5) a retest. Example: HTTPS times out remotely but <strong>curl localhost</strong> succeeds. Check the 443 listener and OPNsense/firewalld logs from the remote test, correct the missing authorized pass rule if confirmed, then retry the same HTTPS request and verify logs. Do not claim a cause until evidence supports it.</p>
+</section>
+<section aria-labelledby="practice-questions">
+<h2 id="practice-questions">Practice questions</h2>
+<p>Try answering these aloud or on paper. They are generated from course objectives and quiz patterns, not leaked exam content.</p>
+<h3 id="1-what-does-a-firewall-do-and-why-use-a-dmz">1 What does a firewall do and why use a DMZ</h3>
+<p>It enforces traffic policy at network boundaries. A DMZ separates externally reachable services from the internal LAN, allowing only required paths and reducing exposure.</p>
+<h3 id="2-compare-stateless-and-stateful-filtering">2 Compare stateless and stateful filtering</h3>
+<p>Stateless filtering evaluates packets individually; stateful filtering tracks connection context and can recognize return traffic of an allowed flow.</p>
+<h3 id="3-an-allow-rule-for-tcp-80-works-but-ping-fails-is-that-contradictory">3 An allow rule for TCP 80 works but ping fails Is that contradictory</h3>
+<p>No. Ping commonly uses ICMP, a different protocol. Check ICMP rules, the host firewall, and route.</p>
+<h3 id="4-explain-wan-ip-port-52314-to-10-1-0-150-port-22">4 Explain WAN IP port 52314 to 10 1 0 150 port 22</h3>
+<p>The firewall translates the destination to the DMZ host and TCP 22. The WAN rule, routing, host firewall, and an SSH service listening on 22 must permit the connection.</p>
+<h3 id="5-why-can-ssh-pass-through-a-rule-for-tcp-8080">5 Why can SSH pass through a rule for TCP 8080</h3>
+<p>A port-based rule sees TCP 8080, not necessarily the application. SSH can listen on that port; application-aware inspection may identify the protocol.</p>
+<h3 id="6-what-is-the-difference-between-cve-and-cvss">6 What is the difference between CVE and CVSS</h3>
+<p>CVE identifies a disclosed vulnerability; CVSS expresses severity characteristics as a score. Neither alone proves a particular host is affected or compromised.</p>
+<h3 id="7-a-scanner-reports-an-old-php-version-what-next">7 A scanner reports an old PHP version What next</h3>
+<p>Validate the service and version, configuration, and vendor advisory; consider backported fixes and exposure. Prioritize and remediate based on actual risk, then rescan.</p>
+<h3 id="8-what-do-docker-mappings-8010-to-80-and-8022-to-22-imply">8 What do Docker mappings 8010 to 80 and 8022 to 22 imply</h3>
+<p>The host exposes container HTTP on 8010 and container SSH on 8022 in this lab. Verify using service detection because port numbers alone are not proof.</p>
+<h3 id="9-describe-three-complementary-ways-to-find-vulnerabilities">9 Describe three complementary ways to find vulnerabilities</h3>
+<p>Combine automated scanning of deployed systems, static source review, and dynamic or fuzz testing. Add dependency inventory and authorized manual testing.</p>
+<h3 id="10-what-are-the-three-zero-trust-principles-in-the-slides">10 What are the three Zero Trust principles in the slides</h3>
+<p>Verify explicitly; use least privilege; assume breach. Controls include MFA, segmentation, device assessment, and continuous monitoring.</p>
+<h3 id="11-match-logjam-poodle-and-ccs-injection-to-the-quiz-cves">11 Match Logjam POODLE and CCS injection to the quiz CVEs</h3>
+<p>Logjam: CVE-2015-4000; POODLE: CVE-2014-3566; CCS injection: CVE-2014-0224.</p>
+<h3 id="12-a-server-is-reachable-from-lan-but-not-externally-name-four-checks">12 A server is reachable from LAN but not externally Name four checks</h3>
+<p>Check WAN destination and port, NAT translation, WAN filtering, routing and return path, host firewall, and service listener. Inspect logs and test from the actual outside source.</p>
+<h3 id="13-how-does-an-sbom-help-vulnerability-management">13 How does an SBOM help vulnerability management</h3>
+<p>It lists software components and versions, helping identify affected dependencies when advisories appear. It must be kept accurate and paired with applicability checks.</p>
+<h3 id="14-what-did-the-lab-teach-about-broad-scanning-rules">14 What did the lab teach about broad scanning rules</h3>
+<p>Allow only the necessary authorized scan window and target, verify availability, then remove temporary access and vulnerable containers after the exercise.</p>
+<h3 id="15-what-lesson-connects-equifax-and-solarwinds">15 What lesson connects Equifax and SolarWinds</h3>
+<p>Both require knowing deployed software, but Equifax emphasizes timely patching of a known flaw while SolarWinds highlights trust and security of the software supply chain.</p>
+</section>
+<section aria-labelledby="more-practice-questions-for-weeks-38-to-47">
+<h2 id="more-practice-questions-for-weeks-38-to-47">More practice questions for Weeks 38 to 47</h2>
+<h3 id="16-what-does-a-ca-sign-and-what-stays-private">16 What does a CA sign and what stays private</h3>
+<p>The CA signs a certificate that binds an identity to a public key. The subject retains its private key. A CSR contains the public key and identity information and is signed to prove possession of the private key.</p>
+<h3 id="17-a-certificate-is-signed-by-your-internal-ca-but-the-browser-warns-why">17 A certificate is signed by your internal CA but the browser warns Why</h3>
+<p>Check whether that CA is trusted by this browser or system, whether intermediates are available, whether the SAN matches the requested name, validity, intended purpose, and revocation or policy failures. A signed certificate is not automatically trusted.</p>
+<h3 id="18-what-changes-with-mutual-tls">18 What changes with mutual TLS</h3>
+<p>The client validates the server certificate and the server also requests and validates a client certificate. The client must possess the matching private key and be trusted under the server&#x27;s policy.</p>
+<h3 id="19-compare-windows-events-4688-and-4663">19 Compare Windows events 4688 and 4663</h3>
+<p>4688 records process creation when enabled. 4663 reports an object access attempt under the relevant audit policy and object audit settings. Examine process, account, object, outcome, and time.</p>
+<h3 id="20-how-do-you-make-a-useful-investigation-timeline">20 How do you make a useful investigation timeline</h3>
+<p>Synchronize clocks; preserve time zone and original records; combine host, authentication, network, and application events by time, identity, and source. Note missing events and ingestion delays.</p>
+<h3 id="21-what-is-normalization-in-a-siem-and-why-use-it">21 What is normalization in a SIEM and why use it</h3>
+<p>It maps different source formats into consistent fields, so events can be searched and correlated across systems. It may lose detail if incorrectly parsed, so preserve original evidence where practical.</p>
+<h3 id="22-several-failed-logins-precede-success-and-file-access-what-does-this-prove">22 Several failed logins precede success and file access What does this prove</h3>
+<p>It is a suspicious pattern, not proof of an attack. Correlate by account and host within a time window, then check user behavior, source, endpoint and transfer evidence before deciding.</p>
+<h3 id="23-why-is-a-honeypot-connection-useful-and-what-is-its-risk">23 Why is a honeypot connection useful and what is its risk</h3>
+<p>Unexpected interaction can reveal scanning or compromise and provide behavioral evidence. A realistic honeypot can be abused as a stepping stone unless isolated, monitored, and restricted.</p>
+<h3 id="24-compare-capture-and-display-filters-in-wireshark">24 Compare capture and display filters in Wireshark</h3>
+<p>A capture filter prevents nonmatching packets from being recorded; a display filter hides nonmatching packets already captured. The latter can be changed while reviewing a capture.</p>
+<h3 id="25-can-a-captured-https-session-always-be-decrypted-with-the-server-private-key">25 Can a captured HTTPS session always be decrypted with the server private key</h3>
+<p>No. The supplied lab uses a compatible RSA key exchange, but ephemeral key exchange such as ECDHE provides forward secrecy against later server-key disclosure. Authorized session secrets may be required.</p>
+<h3 id="26-forward-proxy-or-reverse-proxy">26 Forward proxy or reverse proxy</h3>
+<p>A forward proxy serves client outbound requests and can apply organization policy. A reverse proxy fronts backend servers and can route requests, terminate TLS, load-balance, and apply a WAF.</p>
+<h3 id="27-why-can-a-waf-block-sql-injection-but-not-eliminate-the-underlying-flaw">27 Why can a WAF block SQL injection but not eliminate the underlying flaw</h3>
+<p>The WAF matches traffic patterns and can miss variants or block legitimate requests. Safe parameterized queries, application fixes, least privilege, and testing address the underlying risk.</p>
+<h3 id="28-compare-ids-and-ips">28 Compare IDS and IPS</h3>
+<p>IDS detects and alerts; IPS can actively block traffic when deployed with an enforcement path. Both require suitable visibility and tuned detection rules.</p>
+<h3 id="29-explain-false-positive-and-false-negative">29 Explain false positive and false negative</h3>
+<p>A false positive flags benign behavior as malicious. A false negative misses malicious behavior. Tightening a rule can reduce one while increasing the other, so validate against realistic traffic.</p>
+<h3 id="30-a-suricata-drop-rule-appears-enabled-but-traffic-still-passes-what-do-you-check">30 A Suricata drop rule appears enabled but traffic still passes What do you check</h3>
+<p>Check sensor interface and placement, inline IPS mode, rule and policy action, reload/application, protocol and direction, encryption, match conditions, logs, and whether traffic actually crosses the sensor.</p>
+<h3 id="31-trace-a-combined-incident-from-network-to-endpoint">31 Trace a combined incident from network to endpoint</h3>
+<p>Start with a network alert, record source, destination and time, correlate firewall and SIEM records, identify the endpoint and process, examine authentication and file events, and assess whether data left. Preserve evidence and distinguish observations from hypotheses.</p>
+<h3 id="32-how-do-you-prioritize-a-scanner-finding">32 How do you prioritize a scanner finding</h3>
+<p>Confirm the actual asset, component and configuration, compare vendor guidance and fixes, assess exploitability, exposure and business impact, remediate, and verify. A CVE or severity score is only part of the decision.</p>
+</section>
+<section aria-labelledby="last-review-checklist">
+<h2 id="last-review-checklist">Last review checklist</h2>
+<ul>
+<li>Explain each firewall rule using source, destination, protocol, port, action, and order.</li>
+<li>Trace address and port through NAT; remember a destination translation still needs an appropriate firewall rule.</li>
+<li>Distinguish TCP service testing from ICMP ping and check host as well as network controls.</li>
+<li>Recall CVE versus CVSS versus CWE, and verify findings before concluding a host is vulnerable.</li>
+<li>Practice the three CVE associations and lab port mappings.</li>
+<li>Explain Zero Trust with an example and connect each breach case to a control.</li>
+</ul>
+</section>
+<section aria-labelledby="course-sources">
+<h2 id="course-sources">Course sources</h2>
+<p>Moodle timetable: lecture and lab PDFs for firewalls, vulnerabilities, PKI, logs, SIEM, honeypots, traffic monitoring, proxies, and IDS/IPS. Completed Lab 1 through Lab 8 quiz reviews supplied marked answers and personal feedback. Lab 9 was in progress and had no completed review. Course timetable: https://moodle.jamk.fi/course/view.php?id=17121&amp;section=2</p>
+<p>Practice questions are predictions based on course material; the instructor determines the actual exam content.</p>
+</section>
+      </article>
+      <footer><a href="#top">Back to top</a></footer>
+    </main>
+  </div>
+</body>
+</html>
